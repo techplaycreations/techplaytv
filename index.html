@@ -1,196 +1,209 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Tech Play Digital - IPTV Premium</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Tech Play TV - IPTV Premium</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    * { font-family: 'Outfit', sans-serif; }
-    body {
-      background: linear-gradient(135deg, #061824, #0b2a23);
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, #4ade80, #22d3ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .btn-primary {
-      background: linear-gradient(90deg, #4ade80, #22d3ee);
-      color: #022c22;
-      transition: .3s;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      opacity: .95;
-    }
-    .modal { display: none; }
-    .modal.active { display: flex; }
-  </style>
+<style>
+* { font-family: 'Outfit', sans-serif; }
+body {
+  background: radial-gradient(circle at top, #0e2a2a, #020617);
+}
+.glass {
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.gradient {
+  background: linear-gradient(90deg,#22c55e,#22d3ee);
+}
+.gradient-text {
+  background: linear-gradient(90deg,#22c55e,#22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.modal { display:none }
+.modal.active { display:flex }
+</style>
 </head>
 
-<body class="text-white scroll-smooth">
+<body class="text-white">
 
-<!-- NAVBAR -->
-<nav class="fixed top-0 w-full bg-black/80 backdrop-blur z-50">
-  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-    <span class="font-bold gradient-text text-xl">TECH PLAY DIGITAL</span>
-
-    <div class="hidden md:flex gap-6 items-center">
-      <a href="#planos" class="hover:text-green-400">Planos</a>
-      <a href="#revenda" class="hover:text-green-400">Revenda</a>
-      <button onclick="openTestModal()" class="btn-primary px-4 py-2 rounded-full font-semibold">
+<!-- NAV -->
+<header class="fixed top-0 w-full z-50 bg-black/60 backdrop-blur">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+    <div class="flex items-center gap-2 font-bold text-lg">
+      <span class="gradient-text">TECH PLAY TV</span>
+    </div>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+    <nav class="hidden md:flex gap-6">
+      <a href="#planos">Planos</a>
+      <a href="#revenda">Revenda</a>
+      <button onclick="openModal('teste')" class="px-4 py-2 rounded-full gradient text-black font-semibold">
         Teste Grátis
       </button>
-    </div>
-
-    <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">☰</button>
+    </nav>
   </div>
-
-  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-black/90">
+  <div id="menuMobile" class="hidden px-4 pb-4 bg-black/80 md:hidden">
     <a href="#planos" class="block py-2">Planos</a>
     <a href="#revenda" class="block py-2">Revenda</a>
-    <button onclick="openTestModal()" class="btn-primary w-full py-2 rounded-full mt-3">
+    <button onclick="openModal('teste')" class="w-full mt-3 py-2 rounded-full gradient text-black">
       Teste Grátis
     </button>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
-<section class="pt-28 pb-20 text-center px-4">
-  <h1 class="text-4xl md:text-6xl font-extrabold mb-6">
-    <span class="gradient-text">Tech Play Digital</span><br>
-    IPTV Premium
+<section class="pt-28 px-4 text-center">
+  <span class="px-4 py-1 rounded-full glass text-green-400 text-sm">Streaming Premium 24/7</span>
+  <h1 class="text-4xl md:text-6xl font-extrabold mt-6">
+    TECH PLAY TV<br>
+    <span class="gradient-text">O Melhor IPTV do Brasil</span>
   </h1>
-  <p class="text-gray-300 max-w-xl mx-auto mb-8">
-    Filmes, séries, novelas, esportes e canais ao vivo em alta qualidade
+  <p class="text-gray-300 mt-6 max-w-xl mx-auto">
+    Filmes, séries, novelas e canais ao vivo em um só lugar
   </p>
+  <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+    <button onclick="openModal('teste')" class="px-8 py-4 rounded-full gradient text-black font-bold">
+      🎬 TESTE GRÁTIS
+    </button>
+    <a href="#planos" class="px-8 py-4 rounded-full border border-green-400 font-bold">
+      📺 VER PLANOS
+    </a>
+  </div>
+</section>
 
-  <button onclick="openTestModal()" class="btn-primary px-8 py-4 rounded-full font-bold text-lg">
-    🎬 Solicitar Teste Grátis
-  </button>
+<!-- STATS -->
+<section class="mt-16 px-4 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+  <div class="glass p-6 rounded-xl text-center"><h3 class="text-3xl font-bold gradient-text">60.376</h3><p>Filmes</p></div>
+  <div class="glass p-6 rounded-xl text-center"><h3 class="text-3xl font-bold gradient-text">18.265</h3><p>Séries</p></div>
+  <div class="glass p-6 rounded-xl text-center"><h3 class="text-3xl font-bold gradient-text">2.847</h3><p>Novelas</p></div>
+  <div class="glass p-6 rounded-xl text-center"><h3 class="text-3xl font-bold gradient-text">1.988</h3><p>Canais</p></div>
 </section>
 
 <!-- PLANOS -->
-<section id="planos" class="py-16 px-4 max-w-6xl mx-auto">
+<section id="planos" class="mt-24 px-4 max-w-6xl mx-auto">
   <h2 class="text-3xl font-bold text-center mb-12">
     Escolha seu <span class="gradient-text">Plano</span>
   </h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="bg-black/40 p-6 rounded-xl">
-      <h3 class="font-bold text-xl mb-2">Mensal</h3>
-      <p class="text-4xl font-extrabold mb-4">R$ 35,00</p>
-      <ul class="text-sm text-gray-300 mb-6 space-y-2">
-        <li>✔ 60.000+ filmes</li>
-        <li>✔ 18.000+ séries</li>
-        <li>✔ 2.800+ novelas</li>
-        <li>✔ 2.000+ canais</li>
-        <li>✔ HD / FHD / 4K</li>
-      </ul>
-      <button onclick="subscribePlan('Mensal')" class="btn-primary w-full py-3 rounded-full font-bold">
-        Assinar Agora
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="glass p-6 rounded-xl">
+      <h3 class="text-xl font-bold">Mensal</h3>
+      <p class="text-4xl font-extrabold my-4">R$ 35,00</p>
+      <button onclick="openPlano('Mensal')" class="w-full py-3 rounded-full gradient text-black font-bold">
+        Assinar
       </button>
     </div>
 
-    <div class="bg-black/50 p-6 rounded-xl border-2 border-green-400">
-      <span class="text-xs bg-green-400 text-black px-3 py-1 rounded-full inline-block mb-3">
-        MAIS POPULAR
-      </span>
-      <h3 class="font-bold text-xl mb-2">Trimestral</h3>
-      <p class="text-4xl font-extrabold mb-4">R$ 79,90</p>
-      <ul class="text-sm text-gray-300 mb-6 space-y-2">
-        <li>✔ Tudo do plano mensal</li>
-        <li>✔ Melhor custo-benefício</li>
-      </ul>
-      <button onclick="subscribePlan('Trimestral')" class="btn-primary w-full py-3 rounded-full font-bold">
-        Assinar Agora
+    <div class="glass p-6 rounded-xl border-2 border-green-400">
+      <h3 class="text-xl font-bold">Trimestral</h3>
+      <p class="text-4xl font-extrabold my-4">R$ 79,90</p>
+      <button onclick="openPlano('Trimestral')" class="w-full py-3 rounded-full gradient text-black font-bold">
+        Assinar
       </button>
     </div>
 
-    <div class="bg-black/40 p-6 rounded-xl">
-      <h3 class="font-bold text-xl mb-2">Semestral</h3>
-      <p class="text-4xl font-extrabold mb-4">R$ 139,90</p>
-      <ul class="text-sm text-gray-300 mb-6 space-y-2">
-        <li>✔ Tudo incluso</li>
-        <li>✔ Economia máxima</li>
-      </ul>
-      <button onclick="subscribePlan('Semestral')" class="btn-primary w-full py-3 rounded-full font-bold">
-        Assinar Agora
+    <div class="glass p-6 rounded-xl">
+      <h3 class="text-xl font-bold">Semestral</h3>
+      <p class="text-4xl font-extrabold my-4">R$ 139,90</p>
+      <button onclick="openPlano('Semestral')" class="w-full py-3 rounded-full gradient text-black font-bold">
+        Assinar
       </button>
     </div>
   </div>
 </section>
 
 <!-- REVENDA -->
-<section id="revenda" class="py-16 px-4 max-w-4xl mx-auto text-center">
-  <h2 class="text-3xl font-bold mb-6">
+<section id="revenda" class="mt-24 px-4 max-w-xl mx-auto text-center">
+  <h2 class="text-3xl font-bold mb-4">
     Seja um <span class="gradient-text">Revendedor</span>
   </h2>
   <p class="text-gray-300 mb-8">
-    Trabalhe com IPTV e tenha renda recorrente com suporte total da Tech Play Digital
+    Ganhe dinheiro revendendo nossos planos com suporte total.
   </p>
-  <a href="https://t.me/techplaytv_oficial" target="_blank"
-     class="btn-primary px-8 py-4 rounded-full font-bold inline-block">
-    📢 Falar no Telegram
-  </a>
+  <button onclick="openModal('revenda')" class="px-8 py-4 rounded-full gradient text-black font-bold">
+    Quero ser Revendedor
+  </button>
 </section>
 
-<!-- MODAL TESTE -->
-<div id="testModal" class="modal fixed inset-0 bg-black/80 items-center justify-center z-50">
-  <div class="bg-gray-900 p-8 rounded-xl max-w-sm w-full text-center">
-    <h3 class="text-2xl font-bold mb-4">Solicitar Teste Grátis</h3>
-    <input id="name" class="w-full mb-3 p-3 rounded text-black" placeholder="Seu nome">
-    <input id="phone" class="w-full mb-3 p-3 rounded text-black" placeholder="WhatsApp">
-    <button onclick="sendTest()" class="btn-primary w-full py-3 rounded-full font-bold">
+<!-- MODAL -->
+<div id="modal" class="modal fixed inset-0 bg-black/80 z-50 items-center justify-center">
+  <div class="glass p-6 rounded-xl w-full max-w-md">
+    <h3 id="modalTitle" class="text-xl font-bold mb-4"></h3>
+
+    <input id="nome" class="w-full p-3 rounded bg-black/40 mb-3" placeholder="Nome completo">
+    <input id="email" class="w-full p-3 rounded bg-black/40 mb-3" placeholder="E-mail">
+
+    <div class="mb-3">
+      <label class="block mb-2">Atendimento via:</label>
+      <label class="flex items-center gap-2"><input type="radio" name="canal" value="telegram" checked> Telegram</label>
+      <label class="flex items-center gap-2 mt-2"><input type="radio" name="canal" value="whatsapp"> WhatsApp</label>
+    </div>
+
+    <input id="user" class="w-full p-3 rounded bg-black/40 mb-4" placeholder="@seuusuario">
+
+    <button onclick="enviar()" class="w-full py-3 rounded-full gradient text-black font-bold">
       Enviar
     </button>
-    <button onclick="closeTestModal()" class="block mt-4 text-gray-400 text-sm">
+
+    <button onclick="closeModal()" class="mt-4 text-sm text-gray-400 w-full">
       Cancelar
     </button>
   </div>
 </div>
 
-<!-- JS -->
 <script>
-  const WHATSAPP = "https://wa.me/5551999792104";
-  const TELEGRAM = "https://t.me/techplaytv_oficial";
+let tipo = "";
+let planoSelecionado = "";
 
-  function toggleMobileMenu() {
-    document.getElementById("mobile-menu").classList.toggle("hidden");
-  }
+const TELEGRAM = "https://t.me/techplaytv_oficial";
+const WHATSAPP = "https://wa.me/5551999792104";
 
-  function openTestModal() {
-    document.getElementById("testModal").classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
+function toggleMenu() {
+  document.getElementById("menuMobile").classList.toggle("hidden");
+}
 
-  function closeTestModal() {
-    document.getElementById("testModal").classList.remove("active");
-    document.body.style.overflow = "auto";
-  }
+function openModal(t) {
+  tipo = t;
+  document.getElementById("modal").classList.add("active");
+  document.getElementById("modalTitle").innerText =
+    t === "teste" ? "Solicitar Teste Grátis" :
+    t === "revenda" ? "Quero ser Revendedor" :
+    "Assinar Plano";
+}
 
-  function subscribePlan(plan) {
-    const msg = encodeURIComponent(
-      "Olá! Tenho interesse no plano " + plan + " da Tech Play Digital."
-    );
-    window.open(WHATSAPP + "?text=" + msg, "_blank");
-  }
+function openPlano(p) {
+  planoSelecionado = p;
+  openModal("plano");
+}
 
-  function sendTest() {
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const msg = encodeURIComponent(
-      "Olá! Quero um teste grátis.\nNome: " + name + "\nWhatsApp: " + phone
-    );
-    window.open(WHATSAPP + "?text=" + msg, "_blank");
-  }
+function closeModal() {
+  document.getElementById("modal").classList.remove("active");
+}
+
+function enviar() {
+  const nome = document.getElementById("nome").value;
+  const canal = document.querySelector("input[name='canal']:checked").value;
+
+  let msg = "";
+  if (tipo === "teste")
+    msg = `Olá Tech Play TV, eu quero um teste grátis.\nNome: ${nome}`;
+  if (tipo === "plano")
+    msg = `Olá Tech Play TV, eu quero adquirir o plano ${planoSelecionado}.\nNome: ${nome}`;
+  if (tipo === "revenda")
+    msg = `Olá Tech Play TV, quero ser revendedor.\nNome: ${nome}`;
+
+  const url = canal === "telegram"
+    ? TELEGRAM + "?text=" + encodeURIComponent(msg)
+    : WHATSAPP + "?text=" + encodeURIComponent(msg);
+
+  window.open(url, "_blank");
+}
 </script>
 
 </body>
