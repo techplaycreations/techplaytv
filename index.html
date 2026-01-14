@@ -1,218 +1,235 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Tech Play TV | IPTV Premium</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tech Play TV IPTV Premium com milhares de filmes, séries, novelas e canais ao vivo. Teste grátis disponível.">
+<meta charset="UTF-8">
+<title>Tech Play TV | O Melhor IPTV do Brasil</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #0a2cff, #00c389);
-      color: #fff;
-    }
+<style>
+:root{
+  --green:#2dff9d;
+  --cyan:#2de2ff;
+  --bg1:#041826;
+  --bg2:#03101a;
+}
 
-    header {
-      padding: 60px 20px;
-      text-align: center;
-    }
+*{box-sizing:border-box}
 
-    header h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:#fff;
+}
 
-    header p {
-      font-size: 18px;
-      opacity: 0.9;
-    }
+/* HEADER */
+header{
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+  color:var(--green);
+  font-size:20px;
+}
 
-    .card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 25px;
-    }
+/* HERO */
+.hero{
+  padding:40px 20px;
+  text-align:center;
+}
 
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+.badge{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:50px;
+  background:rgba(45,255,157,0.15);
+  color:var(--green);
+  margin-bottom:20px;
+}
 
-    .plan h3 {
-      margin-top: 0;
-      font-size: 22px;
-    }
+.hero h1{
+  font-size:36px;
+  margin:10px 0;
+}
 
-    .plan p {
-      font-size: 15px;
-      line-height: 1.5;
-    }
+.hero p{
+  opacity:.9;
+  margin-bottom:30px;
+}
 
-    button {
-      background: #00ffb3;
-      border: none;
-      padding: 14px;
-      width: 100%;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 15px;
-    }
+.btn{
+  display:block;
+  width:100%;
+  max-width:320px;
+  margin:10px auto;
+  padding:16px;
+  border-radius:50px;
+  border:none;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    button:hover {
-      background: #00d99a;
-    }
+.btn-primary{
+  background:linear-gradient(90deg,var(--green),var(--cyan));
+  color:#000;
+}
 
-    .faq details {
-      background: rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
+.btn-outline{
+  background:transparent;
+  border:2px solid var(--green);
+  color:var(--green);
+}
 
-    .faq summary {
-      font-weight: bold;
-      cursor: pointer;
-    }
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  padding:20px;
+}
 
-    footer {
-      background: rgba(0,0,0,0.35);
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 14px;
-    }
+.stat{
+  background:rgba(255,255,255,0.05);
+  border-radius:18px;
+  padding:20px;
+  text-align:center;
+}
 
-    footer p {
-      margin: 8px 0;
-      opacity: 0.9;
-    }
+.stat h2{
+  color:var(--green);
+  margin:0;
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 30px;
-      }
-    }
-  </style>
+/* PLANS */
+section{
+  padding:40px 20px;
+}
+
+.plans{
+  display:grid;
+  gap:20px;
+}
+
+.plan{
+  background:rgba(255,255,255,0.06);
+  border-radius:20px;
+  padding:25px;
+}
+
+.plan h3{
+  margin-top:0;
+  color:var(--green);
+}
+
+.plan span{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.plan p{
+  opacity:.9;
+}
+
+/* FOOTER */
+footer{
+  padding:30px 20px;
+  text-align:center;
+  background:rgba(0,0,0,.4);
+  font-size:14px;
+  opacity:.9;
+}
+
+@media(min-width:768px){
+  .stats{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Tech Play TV</h1>
-  <p>IPTV Premium com milhares de conteúdos em um só lugar</p>
+  <div class="logo">📺 TECH PLAY TV</div>
+  <div>☰</div>
 </header>
 
-<section class="card">
-  <h2>📺 O que você terá acesso</h2>
-  <p>
-    📺 <strong>60.376 filmes</strong><br>
-    🎬 <strong>18.265 séries</strong> (incluindo novelas)<br>
-    📡 <strong>1.988 canais ao vivo</strong> abertos e fechados
-  </p>
+<section class="hero">
+  <div class="badge">● Streaming Premium 24/7</div>
+  <h1>TECH PLAY TV<br>O Melhor IPTV do Brasil</h1>
+  <p>Filmes, séries, novelas e canais ao vivo em um só lugar</p>
+
+  <button class="btn btn-primary" onclick="teste()">🎬 TESTE GRÁTIS</button>
+  <button class="btn btn-outline" onclick="document.getElementById('planos').scrollIntoView()">📺 VER PLANOS</button>
 </section>
 
-<section>
-  <h2>💰 Planos disponíveis</h2>
+<div class="stats">
+  <div class="stat"><h2>60.376</h2><p>Filmes</p></div>
+  <div class="stat"><h2>18.265</h2><p>Séries</p></div>
+  <div class="stat"><h2>2.847</h2><p>Novelas</p></div>
+  <div class="stat"><h2>1.988</h2><p>Canais</p></div>
+</div>
+
+<section id="planos">
+  <h2 style="text-align:center">Planos Disponíveis</h2>
 
   <div class="plans">
 
-    <div class="card plan">
-      <h3>Plano Mensal – R$ 35,00</h3>
-      <p>📺 60.376 filmes • 🎬 18.265 séries • 📡 1.988 canais ao vivo</p>
-      <button onclick="assinar('Plano Mensal - 1 mês')">Assinar agora</button>
+    <div class="plan">
+      <h3>Plano Mensal</h3>
+      <span>R$ 35,00</span>
+      <p>Validade: 30 dias</p>
+      <button class="btn btn-primary" onclick="assinar('Mensal')">Assinar</button>
     </div>
 
-    <div class="card plan">
-      <h3>Plano Trimestral – R$ 115,00</h3>
-      <p>📺 60.376 filmes • 🎬 18.265 séries • 📡 1.988 canais ao vivo</p>
-      <button onclick="assinar('Plano Trimestral - 3 meses')">Assinar agora</button>
+    <div class="plan">
+      <h3>Plano Trimestral</h3>
+      <span>R$ 115,00</span>
+      <p>Validade: 3 meses</p>
+      <button class="btn btn-primary" onclick="assinar('Trimestral')">Assinar</button>
     </div>
 
-    <div class="card plan">
-      <h3>Plano Semestral – R$ 190,00</h3>
-      <p>📺 60.376 filmes • 🎬 18.265 séries • 📡 1.988 canais ao vivo</p>
-      <button onclick="assinar('Plano Semestral - 6 meses')">Assinar agora</button>
+    <div class="plan">
+      <h3>Plano Semestral</h3>
+      <span>R$ 190,00</span>
+      <p>Validade: 6 meses</p>
+      <button class="btn btn-primary" onclick="assinar('Semestral')">Assinar</button>
+    </div>
+
+    <div class="plan">
+      <h3>Plano Anual</h3>
+      <span>R$ 350,00</span>
+      <p>Validade: 12 meses</p>
+      <button class="btn btn-primary" onclick="assinar('Anual')">Assinar</button>
     </div>
 
   </div>
 </section>
 
-<section class="card">
-  <h2>🎁 Teste Grátis</h2>
-  <p>Solicite seu teste gratuito e conheça a qualidade da Tech Play TV.</p>
-
-  <button onclick="teste('Teste sem adultos')">Teste grátis (Sem adultos)</button>
-  <button onclick="teste('Teste com adultos')">Teste grátis (Com adultos)</button>
-</section>
-
-<section class="faq">
-  <h2>❓ Perguntas frequentes</h2>
-
-  <details>
-    <summary>Funciona em quais dispositivos?</summary>
-    <p>Smart TV, TV Box, Android, iOS, tablet, computador e Chromecast.</p>
-  </details>
-
-  <details>
-    <summary>O teste é automático?</summary>
-    <p>O teste é liberado após contato para garantir um teste por pessoa.</p>
-  </details>
-
-  <details>
-    <summary>Tem fidelidade?</summary>
-    <p>Não. Você escolhe o plano e pode renovar quando quiser.</p>
-  </details>
-
-  <details>
-    <summary>Posso ser revendedor?</summary>
-    <p>Sim! Entre em contato para saber como se tornar revendedor oficial.</p>
-  </details>
-
-  <details>
-    <summary>O conteúdo é atualizado?</summary>
-    <p>Sim, filmes, séries e canais são atualizados constantemente.</p>
-  </details>
-</section>
-
 <footer>
   <p><strong>Tech Play TV</strong> – IPTV Premium</p>
-  <p>
-    Plataforma digital de entretenimento com milhares de filmes, séries,
-    novelas e canais ao vivo.
-  </p>
-  <p>
-    Atendimento via Telegram.<br>
-    Atendimento WhatsApp realizado por parceiro autorizado:
-    <strong>Tech Play Digital</strong>
-  </p>
-  <p>© 2025 Tech Play TV. Todos os direitos reservados.</p>
+  <p>Plataforma digital de entretenimento com milhares de conteúdos.</p>
+  <p>Atendimento via Telegram | WhatsApp parceiro autorizado</p>
+  <p>© 2025 Tech Play TV – Todos os direitos reservados</p>
 </footer>
 
 <script>
-  function assinar(plano) {
-    const msg = encodeURIComponent(
-      "Olá Tech Play TV, eu quero adquirir o " + plano
-    );
-    window.location.href = "https://t.me/techplaytv_oficial?text=" + msg;
-  }
-
-  function teste(tipo) {
-    const msg = encodeURIComponent(
-      "Olá Tech Play TV, quero solicitar " + tipo
-    );
-    window.location.href = "https://t.me/techplaytv_oficial?text=" + msg;
-  }
+function assinar(plano){
+  const msg = encodeURIComponent("Olá, quero o plano " + plano + " da Tech Play TV");
+  window.location.href = "https://t.me/techplaytv_oficial?text=" + msg;
+}
+function teste(){
+  const msg = encodeURIComponent("Olá, quero solicitar o teste grátis da Tech Play TV");
+  window.location.href = "https://t.me/techplaytv_oficial?text=" + msg;
+}
 </script>
 
 </body>
