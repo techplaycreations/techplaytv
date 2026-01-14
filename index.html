@@ -1,211 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Tech Play TV - IPTV Premium</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Tech Play TV | IPTV Premium</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tech Play TV IPTV Premium com milhares de filmes, séries, novelas e canais ao vivo. Teste grátis disponível.">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0a2cff, #00c389);
+      color: #fff;
+    }
 
-<style>
-* { font-family: 'Outfit', sans-serif; }
-body {
-  background: radial-gradient(circle at top, #0e2a2a, #020617);
-}
-.glass {
-  background: rgba(255,255,255,.05);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,.08);
-}
-.gradient {
-  background: linear-gradient(90deg,#22c55e,#22d3ee);
-}
-.gradient-text {
-  background: linear-gradient(90deg,#22c55e,#22d3ee);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.modal { display:none }
-.modal.active { display:flex }
-</style>
+    header {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .plan h3 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .plan p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    button {
+      background: #00ffb3;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background: #00d99a;
+    }
+
+    .faq details {
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .faq summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background: rgba(0,0,0,0.35);
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer p {
+      margin: 8px 0;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
 
-<body class="text-white">
+<body>
 
-<!-- HEADER -->
-<header class="fixed top-0 w-full z-50 bg-black/60 backdrop-blur">
-  <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
-    <span class="font-bold gradient-text text-lg">TECH PLAY TV</span>
-    <nav class="hidden md:flex gap-6">
-      <a href="#planos">Planos</a>
-      <a href="#revenda">Revenda</a>
-      <button onclick="openModal('teste')" class="px-4 py-2 rounded-full gradient text-black font-semibold">
-        Teste Grátis
-      </button>
-    </nav>
-  </div>
+<header>
+  <h1>Tech Play TV</h1>
+  <p>IPTV Premium com milhares de conteúdos em um só lugar</p>
 </header>
 
-<!-- HERO -->
-<section class="pt-28 px-4 text-center">
-  <h1 class="text-4xl md:text-6xl font-extrabold">
-    TECH PLAY TV<br>
-    <span class="gradient-text">O Melhor IPTV do Brasil</span>
-  </h1>
-  <p class="text-gray-300 mt-6">
-    Filmes, séries, novelas e canais ao vivo em um só lugar
+<section class="card">
+  <h2>📺 O que você terá acesso</h2>
+  <p>
+    📺 <strong>60.376 filmes</strong><br>
+    🎬 <strong>18.265 séries</strong> (incluindo novelas)<br>
+    📡 <strong>1.988 canais ao vivo</strong> abertos e fechados
   </p>
-  <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-    <button onclick="openModal('teste')" class="px-8 py-4 rounded-full gradient text-black font-bold">
-      🎬 TESTE GRÁTIS
-    </button>
-    <a href="#planos" class="px-8 py-4 rounded-full border border-green-400 font-bold">
-      📺 VER PLANOS
-    </a>
+</section>
+
+<section>
+  <h2>💰 Planos disponíveis</h2>
+
+  <div class="plans">
+
+    <div class="card plan">
+      <h3>Plano Mensal – R$ 35,00</h3>
+      <p>📺 60.376 filmes • 🎬 18.265 séries • 📡 1.988 canais ao vivo</p>
+      <button onclick="assinar('Plano Mensal - 1 mês')">Assinar agora</button>
+    </div>
+
+    <div class="card plan">
+      <h3>Plano Trimestral – R$ 115,00</h3>
+      <p>📺 60.376 filmes • 🎬 18.265 séries • 📡 1.988 canais ao vivo</p>
+      <button onclick="assinar('Plano Trimestral - 3 meses')">Assinar agora</button>
+    </div>
+
+    <div class="card plan">
+      <h3>Plano Semestral – R$ 190,00</h3>
+      <p>📺 60.376 filmes • 🎬 18.265 séries • 📡 1.988 canais ao vivo</p>
+      <button onclick="assinar('Plano Semestral - 6 meses')">Assinar agora</button>
+    </div>
+
   </div>
 </section>
 
-<!-- PLANOS -->
-<section id="planos" class="mt-24 px-4 max-w-6xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-12">
-    Escolha seu <span class="gradient-text">Plano</span>
-  </h2>
+<section class="card">
+  <h2>🎁 Teste Grátis</h2>
+  <p>Solicite seu teste gratuito e conheça a qualidade da Tech Play TV.</p>
 
-  <div class="grid md:grid-cols-4 gap-6">
-    <div class="glass p-6 rounded-xl">
-      <h3 class="font-bold">Mensal</h3>
-      <p class="text-3xl font-extrabold my-4">R$ 35,00</p>
-      <button onclick="openPlano('Mensal')" class="w-full py-3 rounded-full gradient text-black font-bold">Assinar</button>
-    </div>
-
-    <div class="glass p-6 rounded-xl">
-      <h3 class="font-bold">Trimestral</h3>
-      <p class="text-3xl font-extrabold my-4">R$ 79,90</p>
-      <button onclick="openPlano('Trimestral')" class="w-full py-3 rounded-full gradient text-black font-bold">Assinar</button>
-    </div>
-
-    <div class="glass p-6 rounded-xl">
-      <h3 class="font-bold">Semestral</h3>
-      <p class="text-3xl font-extrabold my-4">R$ 139,90</p>
-      <button onclick="openPlano('Semestral')" class="w-full py-3 rounded-full gradient text-black font-bold">Assinar</button>
-    </div>
-
-    <div class="glass p-6 rounded-xl border border-green-400">
-      <h3 class="font-bold">Anual</h3>
-      <p class="text-3xl font-extrabold my-4">R$ 249,90</p>
-      <button onclick="openPlano('Anual')" class="w-full py-3 rounded-full gradient text-black font-bold">Assinar</button>
-    </div>
-  </div>
+  <button onclick="teste('Teste sem adultos')">Teste grátis (Sem adultos)</button>
+  <button onclick="teste('Teste com adultos')">Teste grátis (Com adultos)</button>
 </section>
 
-<!-- REVENDA -->
-<section id="revenda" class="mt-24 px-4 max-w-xl mx-auto text-center">
-  <h2 class="text-3xl font-bold mb-4">
-    Seja um <span class="gradient-text">Revendedor</span>
-  </h2>
-  <button onclick="openModal('revenda')" class="px-8 py-4 rounded-full gradient text-black font-bold">
-    Quero ser Revendedor
-  </button>
+<section class="faq">
+  <h2>❓ Perguntas frequentes</h2>
+
+  <details>
+    <summary>Funciona em quais dispositivos?</summary>
+    <p>Smart TV, TV Box, Android, iOS, tablet, computador e Chromecast.</p>
+  </details>
+
+  <details>
+    <summary>O teste é automático?</summary>
+    <p>O teste é liberado após contato para garantir um teste por pessoa.</p>
+  </details>
+
+  <details>
+    <summary>Tem fidelidade?</summary>
+    <p>Não. Você escolhe o plano e pode renovar quando quiser.</p>
+  </details>
+
+  <details>
+    <summary>Posso ser revendedor?</summary>
+    <p>Sim! Entre em contato para saber como se tornar revendedor oficial.</p>
+  </details>
+
+  <details>
+    <summary>O conteúdo é atualizado?</summary>
+    <p>Sim, filmes, séries e canais são atualizados constantemente.</p>
+  </details>
 </section>
 
-<!-- MODAL -->
-<div id="modal" class="modal fixed inset-0 bg-black/80 z-50 items-center justify-center">
-  <div class="glass p-6 rounded-xl w-full max-w-md">
-    <h3 id="modalTitle" class="text-xl font-bold mb-4"></h3>
-
-    <input id="nome" class="w-full p-3 rounded bg-black/40 mb-3" placeholder="Nome completo">
-    <input id="email" class="w-full p-3 rounded bg-black/40 mb-3" placeholder="E-mail">
-
-    <input id="cidade" class="w-full p-3 rounded bg-black/40 mb-3 hidden"
-      placeholder="Cidade e Estado (Ex: Encruzilhada do Sul RS)">
-
-    <div class="mb-3">
-      <label class="block mb-2">Atendimento via:</label>
-      <label class="flex gap-2 items-center">
-        <input type="radio" name="canal" value="telegram" checked> Telegram
-      </label>
-      <label class="flex gap-2 items-center mt-2">
-        <input type="radio" name="canal" value="whatsapp"> WhatsApp
-      </label>
-    </div>
-
-    <input id="contato" class="w-full p-3 rounded bg-black/40 mb-4"
-      placeholder="@seuusuario ou número WhatsApp">
-
-    <button onclick="enviar()" class="w-full py-3 rounded-full gradient text-black font-bold">
-      Enviar
-    </button>
-
-    <button onclick="closeModal()" class="mt-4 text-sm text-gray-400 w-full">Cancelar</button>
-  </div>
-</div>
-
-<script>
-let tipo = "";
-let plano = "";
-
-const TELEGRAM = "https://t.me/techplaytv_oficial";
-const WHATSAPP = "https://wa.me/5551999792104";
-
-function openModal(t) {
-  tipo = t;
-  document.getElementById("modal").classList.add("active");
-  document.getElementById("cidade").classList.toggle("hidden", t !== "revenda");
-
-  document.getElementById("modalTitle").innerText =
-    t === "teste" ? "Solicitar Teste Grátis" :
-    t === "plano" ? "Assinar Plano" :
-    "Quero ser Revendedor";
-}
-
-function openPlano(p) {
-  plano = p;
-  openModal("plano");
-}
-
-function closeModal() {
-  document.getElementById("modal").classList.remove("active");
-}
-
-function enviar() {
-  const nome = document.getElementById("nome").value;
-  const cidade = document.getElementById("cidade").value;
-  const canal = document.querySelector("input[name='canal']:checked").value;
-
-  let msg = "";
-  if (tipo === "teste")
-    msg = `Olá Tech Play TV, eu quero um teste grátis.\nNome: ${nome}`;
-  if (tipo === "plano")
-    msg = `Olá Tech Play TV, eu quero adquirir o plano ${plano}.\nNome: ${nome}`;
-  if (tipo === "revenda")
-    msg = `Olá Tech Play TV, quero ser revendedor.\nNome: ${nome}\nCidade: ${cidade}`;
-
-  const url = canal === "telegram"
-    ? TELEGRAM + "?text=" + encodeURIComponent(msg)
-    : WHATSAPP + "?text=" + encodeURIComponent(msg);
-
-  window.open(url, "_blank");
-}
-</script>
-
-  <footer>
+<footer>
   <p><strong>Tech Play TV</strong> – IPTV Premium</p>
   <p>
     Plataforma digital de entretenimento com milhares de filmes, séries,
-    canais ao vivo e conteúdos sob demanda.
+    novelas e canais ao vivo.
   </p>
-
   <p>
     Atendimento via Telegram.<br>
     Atendimento WhatsApp realizado por parceiro autorizado:
     <strong>Tech Play Digital</strong>
   </p>
+  <p>© 2025 Tech Play TV. Todos os direitos reservados.</p>
+</footer>
 
-  <p style="margin-top:15px;">
-    © 2025 Tech Play TV. Todos os direitos reservados.
-  </p>
-  </footer>
-  
+<script>
+  function assinar(plano) {
+    const msg = encodeURIComponent(
+      "Olá Tech Play TV, eu quero adquirir o " + plano
+    );
+    window.location.href = "https://t.me/techplaytv_oficial?text=" + msg;
+  }
+
+  function teste(tipo) {
+    const msg = encodeURIComponent(
+      "Olá Tech Play TV, quero solicitar " + tipo
+    );
+    window.location.href = "https://t.me/techplaytv_oficial?text=" + msg;
+  }
+</script>
+
 </body>
 </html>
