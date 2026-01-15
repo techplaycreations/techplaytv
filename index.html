@@ -6,10 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:linear-gradient(135deg,#081a2f,#0b3b3f);
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#071a2d,#0b3f3a);
   color:#fff;
   text-align:center;
 }
@@ -17,22 +18,24 @@ header{
   padding:70px 20px;
 }
 header img{
-  max-width:320px;
+  max-width:360px;
   width:100%;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 h1,h2,h3{margin:10px 0}
+p{line-height:1.6}
+.section{padding:60px 20px}
 .btn{
   background:#00e0a8;
   color:#000;
   padding:14px 30px;
   border-radius:30px;
-  text-decoration:none;
   font-weight:bold;
+  text-decoration:none;
   display:inline-block;
   margin:10px;
+  cursor:pointer;
 }
-.section{padding:60px 20px}
 .cards{
   display:flex;
   flex-wrap:wrap;
@@ -40,7 +43,7 @@ h1,h2,h3{margin:10px 0}
   gap:20px;
 }
 .card{
-  background:#0f2c44;
+  background:#0f2e44;
   border-radius:18px;
   padding:25px;
   width:280px;
@@ -52,13 +55,13 @@ input,select{
   border-radius:10px;
   border:none;
 }
-.stars{color:#ffd700}
+.stars{color:#ffd700;font-size:18px}
 details{
-  background:#0f2c44;
-  border-radius:10px;
+  background:#0f2e44;
+  border-radius:12px;
   padding:15px;
   margin:10px auto;
-  max-width:700px;
+  max-width:800px;
   text-align:left;
 }
 footer{
@@ -70,16 +73,22 @@ footer{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.8);
+  background:rgba(0,0,0,.85);
   justify-content:center;
   align-items:center;
+  z-index:999;
 }
 .modal-content{
-  background:#0f2c44;
+  background:#0f2e44;
   padding:25px;
   border-radius:20px;
-  max-width:400px;
+  max-width:420px;
   width:90%;
+}
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:18px;
 }
 </style>
 </head>
@@ -87,71 +96,100 @@ footer{
 <body>
 
 <header>
-  <!-- IMAGEM TOPO -->
-  <img src="imagem-topo.jpg" alt="Tech Play TV">
+  <!-- IMAGEM DO TOPO -->
+  <img src="topo.jpg" alt="Tech Play TV">
   <h1>Tech Play TV</h1>
   <p>IPTV Premium com qualidade e estabilidade</p>
-  <a class="btn" onclick="openModal('teste')">TESTE GRÁTIS</a>
+  <a class="btn" onclick="openTeste()">TESTE GRÁTIS</a>
 </header>
 
 <section class="section">
-<h2>O que é IPTV e como funciona?</h2>
+<h2>O que é IPTV?</h2>
 <p style="max-width:900px;margin:auto">
 IPTV é uma tecnologia que permite assistir canais ao vivo, filmes, séries e novelas
-pela internet, sem precisar de antena ou TV a cabo.  
+pela internet, sem antenas ou TV a cabo.  
 O serviço funciona em Smart TVs, TV Box, celulares Android, iOS, computadores e tablets.
-Você só precisa de uma conexão estável com a internet para aproveitar todo o conteúdo
-com qualidade HD e Full HD.
+Com uma internet estável, você tem acesso a milhares de conteúdos em qualidade HD e Full HD,
+com praticidade e economia.
 </p>
 </section>
 
+<!-- IMAGEM EXTRA -->
+<section class="section">
+<img src="meio1.jpg" style="max-width:700px;width:100%;border-radius:20px">
+</section>
+
 <section class="section" id="planos">
-<h2>Planos Disponíveis</h2>
+<h2>Planos IPTV</h2>
 <div class="cards">
-  <div class="card">
-    <h3>Plano Mensal – R$ 35,00</h3>
-    <p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-    <a class="btn" onclick="openPlano('Plano Mensal – R$ 35,00')">ASSINAR</a>
-  </div>
-  <div class="card">
-    <h3>3 Meses – R$ 79,90</h3>
-    <p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-    <a class="btn" onclick="openPlano('Plano 3 Meses – R$ 79,90')">ASSINAR</a>
-  </div>
-  <div class="card">
-    <h3>6 Meses – R$ 139,90</h3>
-    <p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-    <a class="btn" onclick="openPlano('Plano 6 Meses – R$ 139,90')">ASSINAR</a>
-  </div>
-  <div class="card">
-    <h3>Plano Anual – R$ 259,90</h3>
-    <p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-    <a class="btn" onclick="openPlano('Plano Anual – R$ 259,90')">ASSINAR</a>
-  </div>
+
+<div class="card">
+<h3>Plano Mensal – R$ 35,00</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="openPlano('Plano Mensal – R$ 35,00')">ASSINAR</a>
+</div>
+
+<div class="card">
+<h3>3 Meses – R$ 79,90</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="openPlano('Plano 3 Meses – R$ 79,90')">ASSINAR</a>
+</div>
+
+<div class="card">
+<h3>6 Meses – R$ 139,90</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="openPlano('Plano 6 Meses – R$ 139,90')">ASSINAR</a>
+</div>
+
+<div class="card">
+<h3>Plano Anual – R$ 259,90</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="openPlano('Plano Anual – R$ 259,90')">ASSINAR</a>
+</div>
+
 </div>
 </section>
 
+<!-- COMENTÁRIOS -->
 <section class="section">
 <h2>Comentários de Clientes</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p><strong>Carlos Mendes</strong><p>Qualidade excelente!</p>
-<p class="stars">⭐⭐⭐⭐⭐</p><strong>Juliana Rocha</strong><p>Sem travamentos.</p>
-<p class="stars">⭐⭐⭐⭐⭐</p><strong>Marcos Silva</strong><p>Melhor IPTV que já usei.</p>
-<p class="stars">⭐⭐⭐⭐⭐</p><strong>Fernanda Lima</strong><p>Suporte rápido.</p>
-<p class="stars">⭐⭐⭐⭐⭐</p><strong>Rafael Costa</strong><p>Imagem perfeita.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Carlos Mendes</strong>
+<p>Imagem perfeita e sem travamentos.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Juliana Rocha</strong>
+<p>Testei e já virei cliente.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Marcos Silva</strong>
+<p>Muito melhor que TV a cabo.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Fernanda Lima</strong>
+<p>Funciona perfeito na Smart TV.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Rafael Costa</strong>
+<p>Excelente custo-benefício.</p>
 </section>
 
+<!-- FAQ -->
 <section class="section">
 <h2>Dúvidas Frequentes</h2>
-<details><summary>Funciona em Smart TV?</summary>Sim, funciona em Smart TVs e TV Box.</details>
+<details><summary>Funciona em Smart TV?</summary>Sim, Smart TV e TV Box.</details>
 <details><summary>Posso testar antes?</summary>Sim, oferecemos teste grátis.</details>
-<details><summary>Tem fidelidade?</summary>Não, você escolhe o plano.</details>
+<details><summary>Tem fidelidade?</summary>Não.</details>
 <details><summary>Qual a qualidade?</summary>HD e Full HD.</details>
 <details><summary>Tem suporte?</summary>Sim, suporte ativo.</details>
 </section>
 
+<!-- REVENDEDOR -->
 <section class="section">
 <h2>Seja Revendedor</h2>
-<a class="btn" onclick="openModal('revenda')">QUERO SER REVENDEDOR</a>
+<p>Trabalhe com IPTV e gere renda recorrente.</p>
+<a class="btn" onclick="openRevenda()">QUERO SER REVENDEDOR</a>
 </section>
 
 <footer>
@@ -165,39 +203,63 @@ Atendimento WhatsApp parceiro: Tech Play Digital
 </div>
 
 <script>
-function openModal(type){
-  let html='';
-  if(type==='teste'){
-    html=`<h3>Teste Grátis</h3>
-    <input id="nome" placeholder="Seu nome">
-    <input id="fone" placeholder="WhatsApp 51999999999">
-    <select id="tipo"><option>Sem adultos</option><option>Com adultos</option></select>
-    <a class="btn" onclick="sendTeste()">ENVIAR</a>`;
-  }else{
-    html=`<h3>Seja Revendedor</h3>
-    <input id="nome" placeholder="Nome">
-    <input id="cidade" placeholder="Cidade">
-    <input id="fone" placeholder="WhatsApp">
-    <a class="btn" onclick="sendRevenda()">ENVIAR</a>`;
-  }
-  document.getElementById('modalContent').innerHTML=html;
+function openTeste(){
+  document.getElementById('modalContent').innerHTML=`
+  <span class="close" onclick="closeModal()">✖</span>
+  <h3>Teste Grátis</h3>
+  <input id="nome" placeholder="Seu nome">
+  <input id="fone" placeholder="WhatsApp 51999999999">
+  <select id="adulto">
+    <option>Sem adultos</option>
+    <option>Com adultos</option>
+  </select>
+  <select id="contato">
+    <option>WhatsApp</option>
+    <option>Telegram</option>
+  </select>
+  <a class="btn" onclick="sendTeste()">ENVIAR</a>`;
   document.getElementById('modal').style.display='flex';
 }
+
 function openPlano(plano){
-  let msg=`Olá Tech Play TV, quero adquirir o ${plano}`;
-  window.location.href=`https://wa.me/551999792104?text=${encodeURIComponent(msg)}`;
+  document.getElementById('modalContent').innerHTML=`
+  <span class="close" onclick="closeModal()">✖</span>
+  <h3>${plano}</h3>
+  <input id="nome" placeholder="Seu nome">
+  <input id="fone" placeholder="WhatsApp 51999999999">
+  <a class="btn" onclick="sendPlano('${plano}')">CONTINUAR</a>`;
+  document.getElementById('modal').style.display='flex';
 }
+
+function openRevenda(){
+  document.getElementById('modalContent').innerHTML=`
+  <span class="close" onclick="closeModal()">✖</span>
+  <h3>Seja Revendedor</h3>
+  <input id="nome" placeholder="Nome">
+  <input id="cidade" placeholder="Cidade">
+  <input id="fone" placeholder="WhatsApp">
+  <a class="btn" onclick="sendRevenda()">ENVIAR</a>`;
+  document.getElementById('modal').style.display='flex';
+}
+
 function sendTeste(){
-  let msg=`Olá Tech Play TV, quero TESTE GRÁTIS`;
-  window.location.href=`https://t.me/techplaytv_oficial`;
+  let msg="Olá Tech Play TV, quero TESTE GRÁTIS.";
+  window.location.href="https://t.me/techplaytv_oficial";
 }
+
+function sendPlano(plano){
+  let msg="Olá Tech Play TV, quero adquirir o "+plano;
+  window.location.href="https://wa.me/551999792104?text="+encodeURIComponent(msg);
+}
+
 function sendRevenda(){
-  let msg=`Olá Tech Play TV, quero ser revendedor`;
-  window.location.href=`https://wa.me/551999792104?text=${encodeURIComponent(msg)}`;
+  let msg="Olá Tech Play TV, quero ser revendedor.";
+  window.location.href="https://wa.me/551999792104?text="+encodeURIComponent(msg);
 }
-document.getElementById('modal').onclick=e=>{
-  if(e.target.id==='modal') e.target.style.display='none';
-};
+
+function closeModal(){
+  document.getElementById('modal').style.display='none';
+}
 </script>
 
 </body>
