@@ -344,6 +344,10 @@
         <div id="contact-field-teste"><input type="tel" id="contact-input-teste" name="contato" required placeholder="(19) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
         </div>
        </div>
+       <div><label class="block text-white/70 text-sm mb-3">Dispositivos</label>
+        <div class="grid grid-cols-2 gap-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="Smart TV" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Smart TV</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="TV Box" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">TV Box</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="Celular" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Celular</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="PC" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">PC</span> </label>
+        </div>
+       </div>
        <div><label class="block text-white/70 text-sm mb-3">Conteúdo</label>
         <div class="flex gap-6"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="conteudo_teste" value="Com adultos" class="radio-custom w-5 h-5"> <span class="text-white/80">Com adultos</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="conteudo_teste" value="Sem adultos" checked class="radio-custom w-5 h-5"> <span class="text-white/80">Sem adultos</span> </label>
         </div>
@@ -358,7 +362,7 @@
      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Comentário 1 -->
       <div class="comment-card rounded-2xl p-6 hover:border-[#00ff88]/20 transition">
        <div class="flex items-center gap-1 text-yellow-400 mb-4">
-        ��⭐⭐⭐⭐
+        �������⭐⭐
        </div>
        <p class="text-white/70 mb-4">"Melhor IPTV que já usei! Imagem perfeita e nunca trava. Recomendo demais!"</p>
        <div class="flex items-center gap-3">
@@ -544,7 +548,7 @@
     const defaultConfig = {
       site_title: 'TECH PLAY TV',
       hero_subtitle: 'IPTV Premium com qualidade e estabilidade',
-      whatsapp_number: '5551999792104',
+      whatsapp_number: '551999792104',
       telegram_user: 'techplaytv_oficial',
       background_color: '#0a0a0f',
       accent_color: '#00ff88',
@@ -623,7 +627,7 @@
       
       if (selectedValue === 'WhatsApp') {
         contactInput.type = 'tel';
-        contactInput.placeholder = '(51) 99979-2104';
+        contactInput.placeholder = '(19) 99979-2104';
       } else {
         contactInput.type = 'text';
         contactInput.placeholder = '@techplaytv_oficial';
@@ -742,6 +746,7 @@
       const formData = new FormData(e.target);
       const nome = formData.get('nome');
       const contato = formData.get('contato');
+      const dispositivos = formData.getAll('dispositivos_teste').join(', ') || 'Não especificado';
       const conteudo = formData.get('conteudo_teste');
       const atendimento = formData.get('atendimento_teste');
       
@@ -749,6 +754,7 @@
         `🎁 *SOLICITAÇÃO TESTE GRÁTIS*\n\n` +
         `👤 *Nome:* ${nome}\n` +
         `📱 *Contato:* ${contato}\n` +
+        `📺 *Dispositivos:* ${dispositivos}\n` +
         `🎬 *Conteúdo:* ${conteudo}\n` +
         `💬 *Atendimento via:* ${atendimento}`
       );
@@ -798,5 +804,5 @@
     // Initialize UI
     updateUI();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bea92597316cd97',t:'MTc2ODUzNDYxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9beeab5160954eb1',t:'MTc2ODU3NzU4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
