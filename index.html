@@ -1,392 +1,261 @@
-<!doctype html>
-<html lang="pt-BR" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TECH PLAY TV - O Melhor IPTV do Brasil</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/_sdk/element_sdk.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <style>
-    body {
-      box-sizing: border-box;
-    }
-    * {
-      font-family: 'Outfit', sans-serif;
-    }
-    .gradient-bg {
-      background: linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a2a1f 100%);
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, #4ade80 0%, #22d3ee 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .card-gradient {
-      background: linear-gradient(145deg, rgba(15, 35, 55, 0.9) 0%, rgba(10, 45, 35, 0.9) 100%);
-      border: 1px solid rgba(74, 222, 128, 0.2);
-    }
-    .btn-primary {
-      background: linear-gradient(90deg, #4ade80 0%, #22d3ee 100%);
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 40px rgba(74, 222, 128, 0.3);
-    }
-    .btn-secondary {
-      border: 2px solid #4ade80;
-      transition: all 0.3s ease;
-    }
-    .btn-secondary:hover {
-      background: rgba(74, 222, 128, 0.1);
-      transform: translateY(-2px);
-    }
-    .plan-card {
-      background: linear-gradient(145deg, rgba(15, 35, 55, 0.95) 0%, rgba(10, 45, 35, 0.95) 100%);
-      border: 1px solid rgba(74, 222, 128, 0.3);
-      transition: all 0.3s ease;
-    }
-    .plan-card:hover {
-      transform: translateY(-8px);
-      border-color: #4ade80;
-      box-shadow: 0 20px 60px rgba(74, 222, 128, 0.2);
-    }
-    .plan-card.featured {
-      border: 2px solid #4ade80;
-      position: relative;
-    }
-    .plan-card.featured::before {
-      content: 'MAIS POPULAR';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, #4ade80 0%, #22d3ee 100%);
-      color: #0a1628;
-      font-weight: 700;
-      font-size: 0.75rem;
-      padding: 4px 16px;
-      border-radius: 20px;
-    }
-    .faq-item {
-      border: 1px solid rgba(74, 222, 128, 0.2);
-      transition: all 0.3s ease;
-    }
-    .faq-item.active {
-      border-color: #4ade80;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .faq-item.active .faq-answer {
-      max-height: 200px;
-    }
-    .faq-icon {
-      transition: transform 0.3s ease;
-    }
-    .faq-item.active .faq-icon {
-      transform: rotate(180deg);
-    }
-    .benefit-card {
-      background: linear-gradient(145deg, rgba(15, 35, 55, 0.8) 0%, rgba(10, 45, 35, 0.8) 100%);
-      border: 1px solid rgba(74, 222, 128, 0.15);
-      transition: all 0.3s ease;
-    }
-    .benefit-card:hover {
-      border-color: rgba(74, 222, 128, 0.5);
-      transform: translateY(-4px);
-    }
-    .testimonial-card {
-      background: linear-gradient(145deg, rgba(15, 35, 55, 0.9) 0%, rgba(10, 45, 35, 0.9) 100%);
-      border: 1px solid rgba(74, 222, 128, 0.2);
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: linear-gradient(145deg, #0d2137 0%, #0a2a1f 100%);
-      border: 1px solid rgba(74, 222, 128, 0.3);
-      max-width: 500px;
-      width: 100%;
-      max-height: 90%;
-      overflow-y: auto;
-      border-radius: 20px;
-      animation: modalSlide 0.3s ease;
-    }
-    @keyframes modalSlide {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .input-field {
-      background: rgba(10, 22, 40, 0.8);
-      border: 1px solid rgba(74, 222, 128, 0.3);
-      transition: all 0.3s ease;
-    }
-    .input-field:focus {
-      border-color: #4ade80;
-      outline: none;
-      box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
-    }
-    .hero-image {
-      background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 211, 238, 0.1) 100%);
-      border: 1px solid rgba(74, 222, 128, 0.2);
-    }
-    .scroll-smooth {
-      scroll-behavior: smooth;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    .float-animation {
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(74, 222, 128, 0.5); }
-    }
-    .pulse-glow {
-      animation: pulse-glow 2s ease-in-out infinite;
-    }
-  </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full gradient-bg text-white overflow-auto scroll-smooth"><!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-opacity-90 backdrop-blur-lg" style="background: rgba(10, 22, 40, 0.95);">
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-     <div class="flex items-center gap-2">
-      <svg class="w-8 h-8 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zM9 10l5 3-5 3v-6z" />
-      </svg><span id="nav-title" class="text-xl font-bold gradient-text">TECH PLAY TV</span>
-     </div>
-     <div class="hidden md:flex items-center gap-6"><a href="#beneficios" class="text-gray-300 hover:text-green-400 transition">Benefícios</a> <a href="#planos" class="text-gray-300 hover:text-green-400 transition">Planos</a> <a href="#faq" class="text-gray-300 hover:text-green-400 transition">FAQ</a> <a href="#revendedor" class="text-gray-300 hover:text-green-400 transition">Revenda</a> <button onclick="openTestModal()" class="btn-primary px-4 py-2 rounded-full text-gray-900 font-semibold text-sm"> TESTE GRÁTIS </button>
-     </div><button onclick="toggleMobileMenu()" class="md:hidden text-white">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg></button>
-    </div>
-   </div><!-- Mobile Menu -->
-   <div id="mobile-menu" class="hidden md:hidden bg-opacity-95 backdrop-blur-lg px-4 pb-4" style="background: rgba(10, 22, 40, 0.98);"><a href="#beneficios" class="block py-2 text-gray-300 hover:text-green-400 transition">Benefícios</a> <a href="#planos" class="block py-2 text-gray-300 hover:text-green-400 transition">Planos</a> <a href="#faq" class="block py-2 text-gray-300 hover:text-green-400 transition">FAQ</a> <a href="#revendedor" class="block py-2 text-gray-300 hover:text-green-400 transition">Revenda</a> <button onclick="openTestModal()" class="btn-primary w-full mt-3 px-4 py-2 rounded-full text-gray-900 font-semibold text-sm"> TESTE GRÁTIS </button>
-   </div>
-  </nav><!-- Hero Section -->
-  <section class="pt-24 pb-16 px-4">
-   <div class="max-w-7xl mx-auto"><!-- Hero Image Area -->
-    <div class="hero-image rounded-3xl p-8 md:p-16 mb-8 relative overflow-hidden">
-     <div class="absolute inset-0 opacity-20">
-      <svg class="w-full h-full" viewbox="0 0 800 400" fill="none"><defs>
-        <lineargradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-         <stop offset="0%" style="stop-color:#4ade80;stop-opacity:0.3" />
-         <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:0.3" />
-        </lineargradient>
-       </defs> <rect x="50" y="50" width="200" height="120" rx="10" fill="url(#grad1)" /> <rect x="280" y="30" width="240" height="150" rx="10" fill="url(#grad1)" /> <rect x="550" y="50" width="200" height="120" rx="10" fill="url(#grad1)" /> <rect x="100" y="200" width="180" height="110" rx="10" fill="url(#grad1)" /> <rect x="320" y="210" width="160" height="100" rx="10" fill="url(#grad1)" /> <rect x="520" y="200" width="180" height="110" rx="10" fill="url(#grad1)" /> <circle cx="400" cy="200" r="60" fill="url(#grad1)" opacity="0.5" /> <polygon points="380,170 380,230 430,200" fill="#4ade80" opacity="0.8" />
-      </svg>
-     </div>
-     <div class="relative z-10 text-center">
-      <div class="inline-flex items-center gap-2 bg-green-400/10 border border-green-400/30 rounded-full px-4 py-2 mb-6"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> <span class="text-green-400 text-sm font-medium">Streaming Premium 24/7</span>
-      </div>
-      <h1 id="hero-title" class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6"><span class="gradient-text">TECH PLAY TV</span> <br><span class="text-white">O Melhor IPTV do Brasil</span></h1>
-      <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">Filmes, séries, novelas e canais ao vivo em um só lugar</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center"><button onclick="openTestModal()" class="btn-primary px-8 py-4 rounded-full text-gray-900 font-bold text-lg pulse-glow"> 🎬 TESTE GRÁTIS </button> <a href="#planos" class="btn-secondary px-8 py-4 rounded-full text-green-400 font-bold text-lg"> 📺 VER PLANOS </a>
-      </div>
-     </div>
-    </div><!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-     <div class="text-center p-4 card-gradient rounded-2xl">
-      <div class="text-2xl md:text-4xl font-bold gradient-text">
-       60.376
-      </div>
-      <div class="text-gray-400 text-sm md:text-base">
-       Filmes
-      </div>
-     </div>
-     <div class="text-center p-4 card-gradient rounded-2xl">
-      <div class="text-2xl md:text-4xl font-bold gradient-text">
-       18.265
-      </div>
-      <div class="text-gray-400 text-sm md:text-base">
-       Séries
-      </div>
-     </div>
-     <div class="text-center p-4 card-gradient rounded-2xl">
-      <div class="text-2xl md:text-4xl font-bold gradient-text">
-       2.847
-      </div>
-      <div class="text-gray-400 text-sm md:text-base">
-       Novelas
-      </div>
-     </div>
-     <div class="text-center p-4 card-gradient rounded-2xl">
-      <div class="text-2xl md:text-4xl font-bold gradient-text">
-       1.988
-      </div>
-      <div class="text-gray-400 text-sm md:text-base">
-       Canais
-      </div>
-     </div>
-    </div>
-   </div>
-  </section><!-- Benefits Section -->
-  <section id="beneficios" class="py-16 px-4">
-   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-12">
-     <h2 class="text-3xl md:text-4xl font-bold mb-4">Por que escolher a <span class="gradient-text">TECH PLAY TV</span>?</h2>
-     <p class="text-gray-400 max-w-2xl mx-auto">Oferecemos a melhor experiência em entretenimento digital com qualidade profissional</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"><!-- Benefit 1 -->
-     <div class="benefit-card rounded-2xl p-6 text-center">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-400/20 to-cyan-400/20 flex items-center justify-center">
-       <svg class="w-8 h-8 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM9 8h2v8H9V8zm4 2h2v6h-2v-6z" />
-       </svg>
-      </div>
-      <h3 class="font-bold text-lg mb-2">Qualidade HD, FHD e 4K</h3>
-      <p class="text-gray-400 text-sm">Imagem cristalina em todas as resoluções</p>
-     </div><!-- Benefit 2 -->
-     <div class="benefit-card rounded-2xl p-6 text-center">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-400/20 to-cyan-400/20 flex items-center justify-center">
-       <svg class="w-8 h-8 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
-       </svg>
-      </div>
-      <h3 class="font-bold text-lg mb-2">Multi-dispositivos</h3>
-      <p class="text-gray-400 text-sm">Smart TV, TV Box, Celular, Tablet e PC</p>
-     </div><!-- Benefit 3 -->
-     <div class="benefit-card rounded-2xl p-6 text-center">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-400/20 to-cyan-400/20 flex items-center justify-center">
-       <svg class="w-8 h-8 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z" />
-       </svg>
-      </div>
-      <h3 class="font-bold text-lg mb-2">Atualização Diária</h3>
-      <p class="text-gray-400 text-sm">Conteúdo novo todos os dias</p>
-     </div><!-- Benefit 4 -->
-     <div class="benefit-card rounded-2xl p-6 text-center">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-400/20 to-cyan-400/20 flex items-center justify-center">
-       <svg class="w-8 h-8 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.92 6-4.72 7.28L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.94 2.55 2 6.81 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5v-5l-2.28 2.28C6.92 18 5 15.21 5 12c0-4.08 3.05-7.44 7-7.93V2.05z" />
-       </svg>
-      </div>
-      <h3 class="font-bold text-lg mb-2">Sem Travamentos</h3>
-      <p class="text-gray-400 text-sm">Servidores estáveis e rápidos</p>
-     </div><!-- Benefit 5 -->
-     <div class="benefit-card rounded-2xl p-6 text-center">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-400/20 to-cyan-400/20 flex items-center justify-center">
-       <svg class="w-8 h-8 text-green-400" viewbox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z" />
-       </svg>
-      </div>
-      <h3 class="font-bold text-lg mb-2">Suporte Rápido</h3>
-      <p class="text-gray-400 text-sm">Atendimento ágil via Telegram</p>
-     </div>
-    </div>
-   </div>
-  </section><!-- Free Test CTA Section -->
-  <section class="py-16 px-4">
-   <div class="max-w-4xl mx-auto">
-    <div class="card-gradient rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
-     <div class="absolute top-0 right-0 w-64 h-64 bg-green-400/10 rounded-full blur-3xl"></div>
-     <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl"></div>
-     <div class="relative z-10">
-      <div class="text-6xl mb-6">
-       🎉
-      </div>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Experimente <span class="gradient-text">GRÁTIS</span></h2>
-      <p class="text-gray-300 text-lg mb-8 max-w-xl mx-auto">Teste nossa plataforma por 4 horas sem compromisso e descubra a qualidade do nosso serviço</p><button onclick="openTestModal()" class="btn-primary px-10 py-4 rounded-full text-gray-900 font-bold text-xl pulse-glow"> 🚀 Solicitar Teste Grátis </button>
-     </div>
-    </div>
-   </div>
-  </section><!-- Plans Section -->
-  <section id="planos" class="py-16 px-4">
-   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-12">
-     <h2 class="text-3xl md:text-4xl font-bold mb-4">Escolha seu <span class="gradient-text">Plano</span></h2>
-     <p class="text-gray-400 max-w-2xl mx-auto">Todos os planos incluem acesso completo ao nosso catálogo</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Plan Monthly -->
-     <div class="plan-card rounded-3xl p-6">
-      <div class="text-center mb-6"><span class="text-gray-400 text-sm uppercase tracking-wider">Mensal</span>
-       <div class="text-4xl font-extrabold mt-2">
-        R$ 35<span class="text-lg font-normal text-gray-400">,00</span>
-       </div>
-       <div class="text-gray-400 text-sm mt-1">
-        1 mês de acesso
-       </div>
-      </div>
-      <div class="space-y-3 mb-6">
-       <div class="flex items-center gap-3 text-sm"><span>📺</span><span class="text-gray-300">60.376 filmes</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>🎬</span><span class="text-gray-300">18.265 séries</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>📖</span><span class="text-gray-300">2.847 novelas</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>📡</span><span class="text-gray-300">1.988 canais ao vivo</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>✅</span><span class="text-gray-300">Qualidade HD/FHD/4K</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>✅</span><span class="text-gray-300">Suporte via Telegram</span>
-       </div>
-      </div><button onclick="subscribePlan('Mensal - R$ 35,00')" class="w-full btn-secondary py-3 rounded-full text-green-400 font-bold"> ASSINAR AGORA </button>
-     </div><!-- Plan Trimestral -->
-     <div class="plan-card rounded-3xl p-6">
-      <div class="text-center mb-6"><span class="text-gray-400 text-sm uppercase tracking-wider">Trimestral</span>
-       <div class="text-4xl font-extrabold mt-2">
-        R$ 79<span class="text-lg font-normal text-gray-400">,90</span>
-       </div>
-       <div class="text-gray-400 text-sm mt-1">
-        3 meses de acesso
-       </div>
-      </div>
-      <div class="space-y-3 mb-6">
-       <div class="flex items-center gap-3 text-sm"><span>📺</span><span class="text-gray-300">60.376 filmes</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>🎬</span><span class="text-gray-300">18.265 séries</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>📖</span><span class="text-gray-300">2.847 novelas</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>📡</span><span class="text-gray-300">1.988 canais ao vivo</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>✅</span><span class="text-gray-300">Qualidade HD/FHD/4K</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>✅</span><span class="text-gray-300">Suporte via Telegram</span>
-       </div>
-      </div><button onclick="subscribePlan('Trimestral - R$ 79,90')" class="w-full btn-secondary py-3 rounded-full text-green-400 font-bold"> ASSINAR AGORA </button>
-     </div><!-- Plan Semestral - Featured -->
-     <div class="plan-card featured rounded-3xl p-6">
-      <div class="text-center mb-6"><span class="text-green-400 text-sm uppercase tracking-wider font-semibold">Semestral</span>
-       <div class="text-4xl font-extrabold mt-2">
-        R$ 139<span class="text-lg font-normal text-gray-400">,90</span>
-       </div>
-       <div class="text-gray-400 text-sm mt-1">
-        6 meses de acesso
-       </div>
-      </div>
-      <div class="space-y-3 mb-6">
-       <div class="flex items-center gap-3 text-sm"><span>📺</span><span class="text-gray-300">60.376 filmes</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>🎬</span><span class="text-gray-300">18.265 séries</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>📖</span><span class="text-gray-300">2.847 novelas</span>
-       </div>
-       <div class="flex items-center gap-3 text-sm"><span>📡</span><span class="text-gray-300">1.988 canais ao vivo</span>
-       </div>
-       <div class="flex items-center gap-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Tech Play TV | IPTV Premium</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#081a2b,#0c3f3a);
+  color:#fff;
+  text-align:center;
+}
+section{padding:70px 20px}
+h1,h2,h3{margin-bottom:15px}
+p{line-height:1.7;max-width:900px;margin:0 auto 20px}
+img{max-width:100%;border-radius:18px}
+.btn{
+  display:inline-block;
+  padding:15px 35px;
+  background:#00e0a8;
+  color:#000;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
+  cursor:pointer;
+  margin:10px
+}
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px
+}
+.card{
+  background:#0f2e44;
+  padding:30px;
+  border-radius:22px;
+  width:280px
+}
+.card p{margin:10px 0}
+.stars{color:#ffd700;font-size:18px;margin-bottom:5px}
+details{
+  background:#0f2e44;
+  border-radius:14px;
+  padding:18px;
+  margin:12px auto;
+  max-width:800px;
+  text-align:left;
+  cursor:pointer
+}
+footer{
+  background:#06121c;
+  padding:30px;
+  font-size:14px
+}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  justify-content:center;
+  align-items:center;
+  z-index:999
+}
+.modal-box{
+  background:#0f2e44;
+  padding:25px;
+  border-radius:22px;
+  width:95%;
+  max-width:420px
+}
+input,select{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  border:none
+}
+label{display:block;text-align:left;margin-top:10px}
+.close{float:right;font-size:18px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<section>
+<img src="banner-topo.jpg">
+<h1>Tech Play TV</h1>
+<p>IPTV Premium com qualidade e estabilidade</p>
+<a class="btn" onclick="abrirTeste()">TESTE GRÁTIS</a>
+</section>
+
+<section>
+<h2>O que é IPTV?</h2>
+<p>
+IPTV é uma tecnologia moderna que permite assistir canais de TV ao vivo, filmes,
+séries, esportes e conteúdos sob demanda utilizando apenas a internet.  
+Diferente da TV a cabo tradicional, o IPTV não depende de antenas ou cabos físicos,
+oferecendo muito mais variedade, qualidade e economia.
+<br><br>
+O serviço funciona através de aplicativos compatíveis e pode ser instalado em
+Smart TVs, TV Box, celulares Android, iPhone (iOS), computadores e notebooks.
+Com uma boa conexão de internet, o usuário tem acesso a imagens em alta definição,
+transmissões estáveis e um catálogo completo sempre atualizado.
+<br><br>
+Na Tech Play TV você encontra milhares de filmes, séries, canais nacionais e
+internacionais, esportes, infantis e conteúdos exclusivos, tudo em um único serviço,
+com suporte e estabilidade.
+</p>
+</section>
+
+<section>
+<img src="imagem-meio-1.jpg">
+</section>
+
+<section id="planos">
+<h2>Planos IPTV</h2>
+<div class="cards">
+
+<div class="card">
+<h3>Plano Mensal – R$ 35,00</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="abrirPlano('Mensal – R$ 35,00')">ASSINAR</a>
+</div>
+
+<div class="card">
+<h3>Plano 3 Meses – R$ 79,90</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="abrirPlano('3 Meses – R$ 79,90')">ASSINAR</a>
+</div>
+
+<div class="card">
+<h3>Plano 6 Meses – R$ 139,90</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="abrirPlano('6 Meses – R$ 139,90')">ASSINAR</a>
+</div>
+
+<div class="card">
+<h3>Plano Anual – R$ 259,90</h3>
+<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
+<a class="btn" onclick="abrirPlano('Anual – R$ 259,90')">ASSINAR</a>
+</div>
+
+</div>
+</section>
+
+<section>
+<img src="imagem-meio-2.jpg">
+</section>
+
+<section>
+<h2>Comentários de Clientes</h2>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Carlos Henrique</strong>
+<p>Imagem excelente e muito estável.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Juliana Martins</strong>
+<p>Funciona perfeito na Smart TV.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Rafael Costa</strong>
+<p>Muito melhor que TV a cabo.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Fernanda Lopes</strong>
+<p>Catálogo enorme de filmes e séries.</p>
+
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<strong>Marcos Vinícius</strong>
+<p>Suporte rápido e serviço confiável.</p>
+</section>
+
+<section>
+<h2>FAQ</h2>
+<details><summary>O que é IPTV?</summary>É TV por internet com canais, filmes e séries.</details>
+<details><summary>Funciona em Smart TV?</summary>Sim, Smart TV e TV Box.</details>
+<details><summary>Posso testar antes?</summary>Sim, oferecemos teste grátis.</details>
+<details><summary>Tem fidelidade?</summary>Não, você escolhe o plano.</details>
+<details><summary>Como funciona o suporte?</summary>Atendimento direto via WhatsApp e Telegram.</details>
+</section>
+
+<section>
+<h2>Seja Revendedor</h2>
+<p>Trabalhe com IPTV, gere renda recorrente e tenha suporte completo.</p>
+<a class="btn" onclick="abrirRevenda()">QUERO SER REVENDEDOR</a>
+</section>
+
+<footer>
+© 2025 Tech Play TV<br>
+Atendimento WhatsApp parceiro: Tech Play Digital
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<script>
+function abrirTeste(){
+document.getElementById("modalBox").innerHTML=`
+<span class="close" onclick="fechar()">✖</span>
+<h3>Teste Grátis</h3>
+<input id="nome" placeholder="Seu nome">
+<input id="whats" placeholder="WhatsApp 51999999999">
+<input id="telegram" placeholder="Telegram @usuario">
+<label><input type="radio" name="adulto" value="Sem adultos" checked> Sem adultos</label>
+<label><input type="radio" name="adulto" value="Com adultos"> Com adultos</label>
+<a class="btn" onclick="enviarTeste()">ENVIAR</a>`;
+document.getElementById("modal").style.display="flex";
+}
+
+function abrirPlano(plano){
+document.getElementById("modalBox").innerHTML=`
+<span class="close" onclick="fechar()">✖</span>
+<h3>Plano ${plano}</h3>
+<input id="nome" placeholder="Seu nome">
+<input id="whats" placeholder="WhatsApp 51999999999">
+<input id="telegram" placeholder="Telegram @usuario">
+<label><input type="checkbox"> Smart TV</label>
+<label><input type="checkbox"> TV Box</label>
+<label><input type="checkbox"> Celular</label>
+<label><input type="checkbox"> PC</label>
+<a class="btn" onclick="enviarPlano('${plano}')">CONTINUAR</a>`;
+document.getElementById("modal").style.display="flex";
+}
+
+function abrirRevenda(){
+document.getElementById("modalBox").innerHTML=`
+<span class="close" onclick="fechar()">✖</span>
+<h3>Seja Revendedor</h3>
+<input id="nome" placeholder="Nome">
+<input id="cidade" placeholder="Cidade">
+<input id="whats" placeholder="WhatsApp">
+<input id="telegram" placeholder="Telegram">
+<a class="btn" onclick="enviarRevenda()">ENVIAR</a>`;
+document.getElementById("modal").style.display="flex";
+}
+
+function enviarTeste(){
+let tipo=document.querySelector('input[name="adulto"]:checked').value;
+window.location.href="https://wa.me/551999792104?text="+encodeURIComponent("Olá Tech Play TV, quero TESTE GRÁTIS. Tipo: "+tipo);
+}
+
+function enviarPlano(plano){
+window.location.href="https://wa.me/551999792104?text="+encodeURIComponent("Olá Tech Play TV, quero assinar o plano "+plano);
+}
+
+function enviarRevenda(){
+window.location.href="https://wa.me/551999792104?text="+encodeURIComponent("Olá Tech Play TV, quero ser revendedor.");
+}
+
+function fechar(){
+document.getElementById("modal").style.display="none";
+}
+</script>
+
+</body>
+ </html>
