@@ -1,331 +1,802 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Tech Play TV - IPTV Premium</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Play TV - IPTV Premium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    :root {
+      --primary-green: #00ff88;
+      --primary-blue: #0066ff;
+      --dark-bg: #0a0a0f;
+      --card-bg: #12121a;
+      --card-border: #1a1a2e;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0a0f 0%, #0d1a2d 50%, #0a1a1a 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #00ff88, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glow-green {
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), 0 0 60px rgba(0, 255, 136, 0.1);
+    }
+    .glow-green-hover:hover {
+      box-shadow: 0 0 40px rgba(0, 255, 136, 0.5), 0 0 80px rgba(0, 255, 136, 0.2);
+    }
+    .card-glow {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 255, 136, 0.05);
+    }
+    .card-glow:hover {
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(0, 255, 136, 0.1);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+      color: #000;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+    }
+    .input-field {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .input-field:focus {
+      border-color: #00ff88;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+      outline: none;
+    }
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .plan-card {
+      background: linear-gradient(180deg, #12121a 0%, #0d0d14 100%);
+      border: 1px solid rgba(0, 255, 136, 0.1);
+      transition: all 0.4s ease;
+    }
+    .plan-card:hover {
+      border-color: rgba(0, 255, 136, 0.4);
+      transform: translateY(-8px);
+    }
+    .plan-card.featured {
+      border: 2px solid #00ff88;
+      position: relative;
+    }
+    .plan-card.featured::before {
+      content: '🔥 MAIS POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+      color: #000;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .faq-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    .faq-item:hover {
+      border-color: rgba(0, 255, 136, 0.2);
+    }
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-content.open {
+      max-height: 500px;
+    }
+    .comment-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .modal-overlay {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+    }
+    .modal-content {
+      background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+    }
+    .ad-space {
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.5); }
+    }
+    .checkbox-custom {
+      accent-color: #00ff88;
+    }
+    .radio-custom {
+      accent-color: #00ff88;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full gradient-bg text-white overflow-auto scrollbar-hide">
+  <div class="min-h-full w-full"><!-- Header -->
+   <header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-2"><span class="text-2xl">▶</span> <span id="logo-text" class="text-xl font-bold gradient-text">TECH PLAY TV</span>
+     </div><button id="menu-toggle" class="lg:hidden p-2 hover:bg-white/10 rounded-lg transition">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg></button>
+     <nav class="hidden lg:flex items-center gap-6"><a href="#planos" class="text-sm hover:text-[#00ff88] transition">Planos</a> <a href="#teste" class="text-sm hover:text-[#00ff88] transition">Teste Grátis</a> <a href="#faq" class="text-sm hover:text-[#00ff88] transition">FAQ</a> <a href="#revenda" class="text-sm hover:text-[#00ff88] transition">Revenda</a>
+     </nav>
+    </div>
+   </header><!-- Mobile Menu -->
+   <div id="mobile-menu" class="fixed inset-0 z-40 bg-black/95 backdrop-blur-lg hidden flex-col items-center justify-center gap-8"><button id="menu-close" class="absolute top-4 right-4 p-2">
+     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button> <a href="#planos" class="text-2xl hover:text-[#00ff88] transition mobile-link">Planos</a> <a href="#teste" class="text-2xl hover:text-[#00ff88] transition mobile-link">Teste Grátis</a> <a href="#faq" class="text-2xl hover:text-[#00ff88] transition mobile-link">FAQ</a> <a href="#revenda" class="text-2xl hover:text-[#00ff88] transition mobile-link">Revenda</a>
+   </div><!-- Hero Section -->
+   <section class="pt-20 min-h-screen relative overflow-hidden flex items-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#00ff88]/5 via-transparent to-transparent"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00ff88]/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#0066ff]/10 rounded-full blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-4 py-16 relative z-10 w-full">
+     <div class="text-center"><!-- Hero Image -->
+      <div class="mb-8 relative">
+       <div class="w-full max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+        <div class="aspect-video bg-gradient-to-br from-[#0066ff]/30 to-[#00ff88]/30 flex items-center justify-center relative"><img src="banner.jpg" alt="Tech Play TV Banner" loading="lazy" class="w-full h-full object-cover absolute inset-0" onerror="this.style.display='none'">
+         <div class="relative z-10 text-center p-8">
+          <div class="text-6xl mb-4 animate-float">
+           📺
+          </div><span class="text-white/80 text-lg">Entretenimento Premium</span>
+         </div>
+        </div>
+       </div>
+      </div>
+      <h1 id="hero-title" class="text-4xl md:text-6xl lg:text-7xl font-black mb-6"><span class="gradient-text">TECH PLAY TV</span></h1>
+      <p id="hero-subtitle" class="text-xl md:text-2xl text-white/70 mb-10 max-w-2xl mx-auto">IPTV Premium com qualidade e estabilidade</p><button id="btn-teste-hero" class="btn-primary px-12 py-5 rounded-full text-lg uppercase tracking-wider glow-green animate-pulse-glow"> 🎁 TESTE GRÁTIS </button>
+      <div class="mt-12 flex flex-wrap justify-center gap-8">
+       <div class="text-center">
+        <div class="text-3xl font-bold gradient-text">
+         30.000+
+        </div>
+        <div class="text-white/50 text-sm">
+         Filmes
+        </div>
+       </div>
+       <div class="text-center">
+        <div class="text-3xl font-bold gradient-text">
+         18.000+
+        </div>
+        <div class="text-white/50 text-sm">
+         Séries
+        </div>
+       </div>
+       <div class="text-center">
+        <div class="text-3xl font-bold gradient-text">
+         1.988
+        </div>
+        <div class="text-white/50 text-sm">
+         Canais
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- O que é IPTV -->
+   <section class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">O que é IPTV?</span></h2>
+     <div class="plan-card rounded-3xl p-8 md:p-12 card-glow">
+      <div class="space-y-6 text-white/80 leading-relaxed">
+       <p class="text-lg"><strong class="text-[#00ff88]">IPTV (Internet Protocol Television)</strong> é a tecnologia mais moderna de transmissão de conteúdo audiovisual. Diferente da TV tradicional via cabo ou satélite, o IPTV utiliza sua conexão de internet para entregar filmes, séries e canais ao vivo diretamente no seu dispositivo.</p>
+       <h3 class="text-xl font-semibold text-white mt-8">📡 Como funciona?</h3>
+       <p>O sinal é transmitido através de servidores de alta performance, garantindo streaming fluido e sem travamentos. Nossa infraestrutura conta com servidores distribuídos estrategicamente para oferecer a melhor experiência possível, independente da sua localização.</p>
+       <h3 class="text-xl font-semibold text-white mt-8">✅ Vantagens sobre TV Tradicional</h3>
+       <ul class="grid md:grid-cols-2 gap-3">
+        <li class="flex items-center gap-2"><span class="text-[#00ff88]">✓</span> Sem antena ou parabólica</li>
+        <li class="flex items-center gap-2"><span class="text-[#00ff88]">✓</span> Assista onde quiser</li>
+        <li class="flex items-center gap-2"><span class="text-[#00ff88]">✓</span> Conteúdo sob demanda</li>
+        <li class="flex items-center gap-2"><span class="text-[#00ff88]">✓</span> Custo muito menor</li>
+        <li class="flex items-center gap-2"><span class="text-[#00ff88]">✓</span> Catálogo sempre atualizado</li>
+        <li class="flex items-center gap-2"><span class="text-[#00ff88]">✓</span> Suporte técnico dedicado</li>
+       </ul>
+       <h3 class="text-xl font-semibold text-white mt-8">🎬 Qualidade de Imagem</h3>
+       <p>Oferecemos transmissão em <strong class="text-[#00ff88]">HD, Full HD e 4K</strong>, adaptando automaticamente à velocidade da sua internet para garantir a melhor experiência sem buffering.</p>
+       <h3 class="text-xl font-semibold text-white mt-8">📱 Dispositivos Compatíveis</h3>
+       <div class="flex flex-wrap gap-4 mt-4"><span class="px-4 py-2 bg-white/5 rounded-full text-sm">📺 Smart TV</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">📦 TV Box</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">🤖 Android</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">🍎 iOS</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">💻 PC</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">💻 Notebook</span>
+       </div>
+       <h3 class="text-xl font-semibold text-white mt-8">⚡ Instalação Simples</h3>
+       <p>A configuração é rápida e fácil! Nossa equipe oferece suporte completo via WhatsApp ou Telegram para ajudar você em cada etapa. Em poucos minutos você estar�� aproveitando todo o conteúdo.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Ad Space 1 -->
+   <section class="py-8 px-4">
+    <div class="max-w-4xl mx-auto">
+     <div class="ad-space rounded-2xl p-8 text-center"><img src="mid1.jpg" alt="Anúncio" loading="lazy" class="w-full h-auto rounded-xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <p class="text-white/30 text-sm hidden">Espaço para anúncio</p>
+     </div>
+    </div>
+   </section><!-- Planos -->
+   <section id="planos" class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-3xl md:text-4xl font-bold text-center mb-4"><span class="gradient-text">Escolha seu Plano</span></h2>
+     <p class="text-white/50 text-center mb-12 max-w-2xl mx-auto">Todos os planos incluem acesso completo ao nosso catálogo premium</p>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Plano Mensal -->
+      <div class="plan-card rounded-3xl p-8 text-center card-glow">
+       <div class="text-4xl mb-4">
+        📅
+       </div>
+       <h3 class="text-xl font-bold mb-2">Mensal</h3>
+       <div class="text-4xl font-black gradient-text mb-6">
+        R$ 35<span class="text-lg">,00</span>
+       </div>
+       <ul class="space-y-3 text-white/70 text-sm mb-8 text-left">
+        <li>✓ Todos os canais disponíveis</li>
+        <li>✓ Filmes e séries ilimitados</li>
+        <li>✓ Qualidade HD/Full HD/4K</li>
+        <li>✓ Suporte técnico</li>
+        <li>✓ Atualizações constantes</li>
+       </ul><button class="btn-assinar btn-primary w-full py-4 rounded-xl text-lg font-bold" data-plano="Mensal - R$ 35,00"> ASSINAR </button>
+      </div><!-- Plano 3 Meses -->
+      <div class="plan-card rounded-3xl p-8 text-center card-glow">
+       <div class="text-4xl mb-4">
+        🗓️
+       </div>
+       <h3 class="text-xl font-bold mb-2">Trimestral</h3>
+       <div class="text-4xl font-black gradient-text mb-6">
+        R$ 79<span class="text-lg">,90</span>
+       </div>
+       <ul class="space-y-3 text-white/70 text-sm mb-8 text-left">
+        <li>✓ Todos os canais disponíveis</li>
+        <li>✓ Filmes e séries ilimitados</li>
+        <li>✓ Qualidade HD/Full HD/4K</li>
+        <li>✓ Suporte técnico</li>
+        <li>✓ Atualizações constantes</li>
+       </ul><button class="btn-assinar btn-primary w-full py-4 rounded-xl text-lg font-bold" data-plano="Trimestral - R$ 79,90"> ASSINAR </button>
+      </div><!-- Plano 6 Meses -->
+      <div class="plan-card featured rounded-3xl p-8 text-center card-glow">
+       <div class="text-4xl mb-4">
+        🏆
+       </div>
+       <h3 class="text-xl font-bold mb-2">Semestral</h3>
+       <div class="text-4xl font-black gradient-text mb-6">
+        R$ 139<span class="text-lg">,90</span>
+       </div>
+       <ul class="space-y-3 text-white/70 text-sm mb-8 text-left">
+        <li>✓ Todos os canais disponíveis</li>
+        <li>✓ Filmes e séries ilimitados</li>
+        <li>✓ Qualidade HD/Full HD/4K</li>
+        <li>✓ Suporte técnico</li>
+        <li>✓ Atualizações constantes</li>
+       </ul><button class="btn-assinar btn-primary w-full py-4 rounded-xl text-lg font-bold" data-plano="Semestral - R$ 139,90"> ASSINAR </button>
+      </div><!-- Plano Anual -->
+      <div class="plan-card rounded-3xl p-8 text-center card-glow">
+       <div class="text-4xl mb-4">
+        👑
+       </div>
+       <h3 class="text-xl font-bold mb-2">Anual</h3>
+       <div class="text-4xl font-black gradient-text mb-6">
+        R$ 259<span class="text-lg">,90</span>
+       </div>
+       <ul class="space-y-3 text-white/70 text-sm mb-8 text-left">
+        <li>✓ Todos os canais disponíveis</li>
+        <li>✓ Filmes e séries ilimitados</li>
+        <li>✓ Qualidade HD/Full HD/4K</li>
+        <li>✓ Suporte técnico</li>
+        <li>✓ Atualizações constantes</li>
+       </ul><button class="btn-assinar btn-primary w-full py-4 rounded-xl text-lg font-bold" data-plano="Anual - R$ 259,90"> ASSINAR </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Teste Grátis -->
+   <section id="teste" class="py-20 px-4 relative">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#00ff88]/5 to-[#0066ff]/5"></div>
+    <div class="max-w-3xl mx-auto relative z-10">
+     <div class="plan-card rounded-3xl p-8 md:p-12 text-center card-glow">
+      <div class="text-6xl mb-6 animate-float">
+       🎁
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Teste Grátis</span></h2>
+      <p class="text-white/60 mb-8 max-w-lg mx-auto">Experimente nossa qualidade antes de assinar. Sem compromisso, sem cartão de crédito!</p>
+      <form id="form-teste" class="space-y-4 max-w-md mx-auto text-left">
+       <div><label class="block text-white/70 text-sm mb-2">Nome completo</label> <input type="text" name="nome" required placeholder="Seu nome" class="input-field w-full px-5 py-4 rounded-xl">
+       </div>
+       <div><label class="block text-white/70 text-sm mb-3">Atendimento preferido</label>
+        <div class="flex gap-6 mb-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento_teste" value="WhatsApp" checked class="radio-custom w-5 h-5" onchange="toggleContactField('teste')"> <span class="text-white/80">WhatsApp</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento_teste" value="Telegram" class="radio-custom w-5 h-5" onchange="toggleContactField('teste')"> <span class="text-white/80">Telegram</span> </label>
+        </div>
+        <div id="contact-field-teste"><input type="tel" id="contact-input-teste" name="contato" required placeholder="(19) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
+        </div>
+       </div>
+       <div><label class="block text-white/70 text-sm mb-3">Conteúdo</label>
+        <div class="flex gap-6"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="conteudo_teste" value="Com adultos" class="radio-custom w-5 h-5"> <span class="text-white/80">Com adultos</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="conteudo_teste" value="Sem adultos" checked class="radio-custom w-5 h-5"> <span class="text-white/80">Sem adultos</span> </label>
+        </div>
+       </div><button type="submit" class="btn-primary w-full py-5 rounded-xl text-lg font-bold mt-6 glow-green"> SOLICITAR TESTE GRÁTIS </button>
+      </form>
+     </div>
+    </div>
+   </section><!-- Comentários -->
+   <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">O que dizem nossos clientes</span></h2>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Comentário 1 -->
+      <div class="comment-card rounded-2xl p-6 hover:border-[#00ff88]/20 transition">
+       <div class="flex items-center gap-1 text-yellow-400 mb-4">
+        ��⭐⭐⭐⭐
+       </div>
+       <p class="text-white/70 mb-4">"Melhor IPTV que já usei! Imagem perfeita e nunca trava. Recomendo demais!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#00ff88] to-[#0066ff] flex items-center justify-center font-bold">
+         M
+        </div><span class="font-medium">Marcos Silva</span>
+       </div>
+      </div><!-- Comentário 2 -->
+      <div class="comment-card rounded-2xl p-6 hover:border-[#00ff88]/20 transition">
+       <div class="flex items-center gap-1 text-yellow-400 mb-4">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="text-white/70 mb-4">"Atendimento excelente! Me ajudaram a configurar tudo rapidinho. Super satisfeita!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#00ff88] to-[#0066ff] flex items-center justify-center font-bold">
+         A
+        </div><span class="font-medium">Ana Oliveira</span>
+       </div>
+      </div><!-- Comentário 3 -->
+      <div class="comment-card rounded-2xl p-6 hover:border-[#00ff88]/20 transition">
+       <div class="flex items-center gap-1 text-yellow-400 mb-4">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="text-white/70 mb-4">"Qualidade 4K incrível! Assisto tudo no meu TV Box sem problemas. Vale cada centavo."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#00ff88] to-[#0066ff] flex items-center justify-center font-bold">
+         R
+        </div><span class="font-medium">Roberto Santos</span>
+       </div>
+      </div><!-- Comentário 4 -->
+      <div class="comment-card rounded-2xl p-6 hover:border-[#00ff88]/20 transition">
+       <div class="flex items-center gap-1 text-yellow-400 mb-4">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="text-white/70 mb-4">"Já testei vários e esse é disparado o melhor. Catálogo enorme e sempre atualizado!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#00ff88] to-[#0066ff] flex items-center justify-center font-bold">
+         J
+        </div><span class="font-medium">Juliana Costa</span>
+       </div>
+      </div><!-- Comentário 5 -->
+      <div class="comment-card rounded-2xl p-6 hover:border-[#00ff88]/20 transition md:col-span-2 lg:col-span-1">
+       <div class="flex items-center gap-1 text-yellow-400 mb-4">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="text-white/70 mb-4">"Funciona perfeitamente na minha Smart TV. Suporte sempre disponível. Nota 10!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#00ff88] to-[#0066ff] flex items-center justify-center font-bold">
+         P
+        </div><span class="font-medium">Pedro Almeida</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Ad Space 2 -->
+   <section class="py-8 px-4">
+    <div class="max-w-4xl mx-auto">
+     <div class="ad-space rounded-2xl p-8 text-center"><img src="mid2.jpg" alt="Anúncio" loading="lazy" class="w-full h-auto rounded-xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <p class="text-white/30 text-sm hidden">Espaço para anúncio</p>
+     </div>
+    </div>
+   </section><!-- FAQ -->
+   <section id="faq" class="py-20 px-4">
+    <div class="max-w-3xl mx-auto">
+     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Perguntas Frequentes</span></h2>
+     <div class="space-y-4"><!-- FAQ 1 -->
+      <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">O que é IPTV?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
+       <div class="faq-content px-6 pb-5">
+        <p class="text-white/70">IPTV é a transmissão de TV pela internet. Em vez de usar antena ou cabo, você assiste filmes, séries e canais ao vivo através da sua conexão de internet, com qualidade HD, Full HD e até 4K.</p>
+       </div>
+      </div><!-- FAQ 2 -->
+      <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Funciona em Smart TV?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
+       <div class="faq-content px-6 pb-5">
+        <p class="text-white/70">Sim! Funciona em Smart TVs Samsung, LG, TCL e outras marcas. Também funciona em TV Box, celular Android/iPhone, PC e notebook. Nossa equipe ajuda você a instalar!</p>
+       </div>
+      </div><!-- FAQ 3 -->
+      <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Posso testar antes de assinar?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
+       <div class="faq-content px-6 pb-5">
+        <p class="text-white/70">Claro! Oferecemos teste grátis para você conhecer nossa qualidade antes de decidir. Basta preencher o formulário na seção "Teste Grátis" e entraremos em contato!</p>
+       </div>
+      </div><!-- FAQ 4 -->
+      <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Tem fidelidade?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
+       <div class="faq-content px-6 pb-5">
+        <p class="text-white/70">Não! Não trabalhamos com fidelidade. Você assina o período que preferir e pode cancelar quando quiser. Sem burocracia e sem multas!</p>
+       </div>
+      </div><!-- FAQ 5 -->
+      <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Como funciona o suporte?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
+       <div class="faq-content px-6 pb-5">
+        <p class="text-white/70">Nosso suporte está disponível 24/7 via WhatsApp e Telegram. Nossa equipe está sempre pronta para ajudar com instalação, configuração e qualquer dúvida!</p>
+       </div>
+      </div><!-- FAQ 6 -->
+      <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Posso usar em mais de um dispositivo?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
+       <div class="faq-content px-6 pb-5">
+        <p class="text-white/70">Cada assinatura é para 1 dispositivo. Se precisar usar em mais aparelhos, consulte nossos planos multi-tela ou faça múltiplas assinaturas com desconto especial!</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Seja Revendedor -->
+   <section id="revenda" class="py-20 px-4 relative">
+    <div class="absolute inset-0 bg-gradient-to-l from-[#00ff88]/5 to-[#0066ff]/5"></div>
+    <div class="max-w-3xl mx-auto relative z-10">
+     <div class="plan-card rounded-3xl p-8 md:p-12 card-glow">
+      <div class="text-center mb-8">
+       <div class="text-6xl mb-4">
+        💰
+       </div>
+       <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Seja um Revendedor</span></h2>
+       <p class="text-white/60 max-w-lg mx-auto">Ganhe dinheiro revendendo nossos planos. Comissões atrativas e suporte total para você crescer!</p>
+      </div>
+      <form id="form-revenda" class="space-y-4 max-w-md mx-auto">
+       <div><label class="block text-white/70 text-sm mb-2">Nome completo</label> <input type="text" name="nome" required placeholder="Seu nome" class="input-field w-full px-5 py-4 rounded-xl">
+       </div>
+       <div><label class="block text-white/70 text-sm mb-2">Cidade</label> <input type="text" name="cidade" required placeholder="Sua cidade" class="input-field w-full px-5 py-4 rounded-xl">
+       </div>
+       <div><label class="block text-white/70 text-sm mb-3">Atendimento preferido</label>
+        <div class="flex gap-6 mb-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento_revenda" value="WhatsApp" checked class="radio-custom w-5 h-5" onchange="toggleContactField('revenda')"> <span class="text-white/80">WhatsApp</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento_revenda" value="Telegram" class="radio-custom w-5 h-5" onchange="toggleContactField('revenda')"> <span class="text-white/80">Telegram</span> </label>
+        </div>
+        <div id="contact-field-revenda"><input type="tel" id="contact-input-revenda" name="contato" required placeholder="(19) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
+        </div>
+       </div><button type="submit" class="btn-primary w-full py-5 rounded-xl text-lg font-bold mt-6 glow-green"> QUERO SER REVENDEDOR </button>
+      </form>
+     </div>
+    </div>
+   </section><!-- Novidades -->
+   <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Novidades e Anúncios</span></h2>
+     <div class="plan-card rounded-3xl p-6 card-glow overflow-hidden"><a href="https://www.blogger.com/blog/posts/591?hl=pt-BR" target="_blank" rel="noopener noreferrer" class="block text-center py-12 hover:bg-white/5 rounded-xl transition">
+       <div class="text-5xl mb-4">
+        📰
+       </div><p class="text-white/70 mb-4">Confira nosso blog com as últimas novidades!</p><span class="inline-flex items-center gap-2 text-[#00ff88] font-medium"> Acessar Blog 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg></span> </a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-12 px-4 border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-8">
+      <div class="flex items-center justify-center gap-2 mb-4"><span class="text-2xl">▶</span> <span class="text-xl font-bold gradient-text">TECH PLAY TV</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 mb-6"><a href="https://wa.me/551999792104" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/70 hover:text-[#00ff88] transition"> <span class="text-xl">📱</span> WhatsApp </a> <a href="https://t.me/techplaytv_oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/70 hover:text-[#00ff88] transition"> <span class="text-xl">✈️</span> @techplaytv_oficial </a>
+      </div>
+      <p class="text-white/40 text-sm mb-2">Atendimento WhatsApp parceiro: Tech Play Digital</p>
+     </div>
+     <div class="text-center text-white/30 text-sm">
+      © 2025 Tech Play TV. Todos os direitos reservados.
+     </div>
+    </div>
+   </footer><!-- Modal Assinatura -->
+   <div id="modal-assinar" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
+    <div class="modal-content w-full max-w-md rounded-3xl p-8 max-h-[90%] overflow-y-auto">
+     <div class="flex items-center justify-between mb-6">
+      <h3 class="text-xl font-bold gradient-text">Finalizar Assinatura</h3><button id="modal-close" class="p-2 hover:bg-white/10 rounded-lg transition">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg></button>
+     </div>
+     <p id="modal-plano" class="text-[#00ff88] font-medium mb-6 text-center p-3 bg-[#00ff88]/10 rounded-xl"></p>
+     <form id="form-assinar" class="space-y-4">
+      <div><label class="block text-white/70 text-sm mb-2">Nome completo</label> <input type="text" name="nome" required placeholder="Seu nome" class="input-field w-full px-5 py-4 rounded-xl">
+      </div>
+      <div><label class="block text-white/70 text-sm mb-3">Atendimento preferido</label>
+       <div class="flex gap-6 mb-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento" value="WhatsApp" checked class="radio-custom w-5 h-5" onchange="toggleContactField('assinar')"> <span class="text-white/80">WhatsApp</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento" value="Telegram" class="radio-custom w-5 h-5" onchange="toggleContactField('assinar')"> <span class="text-white/80">Telegram</span> </label>
+       </div>
+       <div id="contact-field-assinar"><input type="tel" id="contact-input-assinar" name="contato" required placeholder="(19) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
+       </div>
+      </div>
+      <div><label class="block text-white/70 text-sm mb-3">Dispositivos</label>
+       <div class="grid grid-cols-2 gap-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos" value="Smart TV" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Smart TV</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos" value="TV Box" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">TV Box</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos" value="Celular" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Celular</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos" value="PC" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">PC</span> </label>
+       </div>
+      </div>
+      <div><label class="block text-white/70 text-sm mb-3">Conteúdo</label>
+       <div class="flex gap-6"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="conteudo" value="Com adultos" class="radio-custom w-5 h-5"> <span class="text-white/80">Com adultos</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="conteudo" value="Sem adultos" checked class="radio-custom w-5 h-5"> <span class="text-white/80">Sem adultos</span> </label>
+       </div>
+      </div><button type="submit" class="btn-primary w-full py-5 rounded-xl text-lg font-bold mt-4 glow-green"> ENVIAR PEDIDO </button>
+     </form>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Config
+    const defaultConfig = {
+      site_title: 'TECH PLAY TV',
+      hero_subtitle: 'IPTV Premium com qualidade e estabilidade',
+      whatsapp_number: '551999792104',
+      telegram_user: 'techplaytv_oficial',
+      background_color: '#0a0a0f',
+      accent_color: '#00ff88',
+      text_color: '#ffffff',
+      card_color: '#12121a',
+      secondary_color: '#0066ff'
+    };
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{
-background:linear-gradient(180deg,#071a2b,#042f2a);
-color:#fff;
-text-align:center;
-}
-section{padding:70px 20px}
-.container{max-width:1100px;margin:auto}
-h1,h2{margin-bottom:20px}
-p{opacity:.9}
+    let config = { ...defaultConfig };
 
-header{
-background:linear-gradient(135deg,#071a2b,#063b36);
-padding:90px 20px
-}
-header img{max-width:100%;border-radius:20px;margin-bottom:30px}
-.logo{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:40px
-}
-.logo span{
-color:#2dff9d;
-font-weight:bold;
-font-size:22px
-}
+    // Element SDK initialization
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          updateUI();
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            },
+            {
+              get: () => config.card_color || defaultConfig.card_color,
+              set: (value) => window.elementSdk.setConfig({ card_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => window.elementSdk.setConfig({ accent_color: value })
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['site_title', config.site_title || defaultConfig.site_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['whatsapp_number', config.whatsapp_number || defaultConfig.whatsapp_number],
+          ['telegram_user', config.telegram_user || defaultConfig.telegram_user]
+        ])
+      });
+    }
 
-button{
-background:linear-gradient(135deg,#2dff9d,#00c6ff);
-border:none;
-border-radius:30px;
-padding:16px 40px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-color:#002;
-transition:.3s
-}
-button:hover{transform:scale(1.05)}
+    function updateUI() {
+      document.getElementById('logo-text').textContent = config.site_title || defaultConfig.site_title;
+      document.getElementById('hero-title').innerHTML = `<span class="gradient-text">${config.site_title || defaultConfig.site_title}</span>`;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      
+      document.documentElement.style.setProperty('--primary-green', config.accent_color || defaultConfig.accent_color);
+      document.documentElement.style.setProperty('--dark-bg', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--card-bg', config.card_color || defaultConfig.card_color);
+    }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-margin-top:40px
-}
-.card{
-background:rgba(255,255,255,.06);
-border-radius:25px;
-padding:35px
-}
-.price{font-size:30px;margin:15px 0;color:#2dff9d}
+    // Toggle contact field based on selection
+    function toggleContactField(formType) {
+      const contactInput = document.getElementById(`contact-input-${formType}`);
+      const atendimentoRadios = document.querySelectorAll(`input[name="atendimento${formType === 'teste' ? '_teste' : formType === 'revenda' ? '_revenda' : ''}"]`);
+      
+      let selectedValue = '';
+      atendimentoRadios.forEach(radio => {
+        if (radio.checked) {
+          selectedValue = radio.value;
+        }
+      });
+      
+      if (selectedValue === 'WhatsApp') {
+        contactInput.type = 'tel';
+        contactInput.placeholder = '(19) 99979-2104';
+      } else {
+        contactInput.type = 'text';
+        contactInput.placeholder = '@techplaytv_oficial';
+      }
+    }
 
-form{
-max-width:500px;
-margin:40px auto;
-background:rgba(255,255,255,.05);
-padding:35px;
-border-radius:25px
-}
-input,select{
-width:100%;
-padding:14px;
-margin:10px 0;
-border-radius:12px;
-border:none;
-background:#061c2b;
-color:#fff
-}
-input::placeholder{color:#aaa}
+    // Mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
 
-.radio-group{
-display:flex;
-gap:15px;
-justify-content:center;
-margin:15px 0
-}
-.radio-box{
-flex:1;
-border:2px solid #0d5;
-padding:15px;
-border-radius:15px;
-cursor:pointer
-}
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
+    });
 
-.comment{
-background:rgba(255,255,255,.06);
-border-radius:20px;
-padding:25px;
-margin:15px 0
-}
-.stars{color:gold;margin-bottom:8px}
+    menuClose.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+    });
 
-.faq-item{
-margin:12px 0;
-text-align:left
-}
-.faq-q{
-background:rgba(255,255,255,.08);
-padding:18px;
-border-radius:15px;
-cursor:pointer
-}
-.faq-a{
-display:none;
-padding:18px
-}
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+    });
 
-.ad{
-margin:50px auto;
-padding:40px;
-border:2px dashed #2dff9d;
-border-radius:20px;
-opacity:.7
-}
+    // FAQ accordion
+    document.querySelectorAll('.faq-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const content = toggle.nextElementSibling;
+        const icon = toggle.querySelector('.faq-icon');
+        const isOpen = content.classList.contains('open');
+        
+        document.querySelectorAll('.faq-content').forEach(c => c.classList.remove('open'));
+        document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+        
+        if (!isOpen) {
+          content.classList.add('open');
+          icon.textContent = '−';
+        }
+      });
+    });
 
-footer{
-background:#020e18;
-padding:30px;
-font-size:14px
-}
+    // Modal
+    const modal = document.getElementById('modal-assinar');
+    const modalPlano = document.getElementById('modal-plano');
+    const modalClose = document.getElementById('modal-close');
+    let selectedPlan = '';
 
-@media(max-width:600px){
-header{padding:60px 15px}
-}
-</style>
-</head>
+    document.querySelectorAll('.btn-assinar').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedPlan = btn.dataset.plano;
+        modalPlano.textContent = `Plano selecionado: ${selectedPlan}`;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
 
-<body>
+    modalClose.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
 
-<header>
-<div class="container">
-<div class="logo">
-<span>▶ TECH PLAY TV</span>
-<span>☰</span>
-</div>
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
 
-<img src="" alt="Banner IPTV">
+    // Test button hero
+    document.getElementById('btn-teste-hero').addEventListener('click', () => {
+      document.getElementById('teste').scrollIntoView({ behavior: 'smooth' });
+    });
 
-<h1>Tech Play TV</h1>
-<p>IPTV Premium com qualidade e estabilidade</p>
-<br>
-<button onclick="scrollToId('teste')">TESTE GRÁTIS</button>
-</div>
-</header>
+    // Form submissions
+    document.getElementById('form-assinar').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const nome = formData.get('nome');
+      const contato = formData.get('contato');
+      const dispositivos = formData.getAll('dispositivos').join(', ') || 'Não especificado';
+      const conteudo = formData.get('conteudo');
+      const atendimento = formData.get('atendimento');
+      
+      const mensagem = encodeURIComponent(
+        `🔔 *NOVA ASSINATURA*\n\n` +
+        `📋 *Plano:* ${selectedPlan}\n` +
+        `👤 *Nome:* ${nome}\n` +
+        `📱 *Contato:* ${contato}\n` +
+        `📺 *Dispositivos:* ${dispositivos}\n` +
+        `🎬 *Conteúdo:* ${conteudo}\n` +
+        `💬 *Atendimento via:* ${atendimento}`
+      );
+      
+      const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
+      const telegram = config.telegram_user || defaultConfig.telegram_user;
+      
+      if (atendimento === 'WhatsApp') {
+        window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
+      } else {
+        window.open(`https://t.me/${telegram}?text=${mensagem}`, '_blank');
+      }
+      
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      e.target.reset();
+      toggleContactField('assinar');
+    });
 
-<section>
-<div class="container">
-<h2>O que é IPTV?</h2>
-<p>
-IPTV é a transmissão de canais de TV, filmes e séries através da internet, sem necessidade de antenas ou TV a cabo.
-Com a Tech Play TV você tem acesso a milhares de conteúdos em qualidade HD, Full HD e 4K.
-<br><br>
-Compatível com Smart TVs, TV Box, Android, iOS, computadores e tablets.
-Basta instalar o aplicativo indicado, inserir seus dados e aproveitar.
-<br><br>
-Conteúdo sempre atualizado, estabilidade avançada e suporte dedicado.
-</p>
-</div>
-</section>
+    document.getElementById('form-teste').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const nome = formData.get('nome');
+      const contato = formData.get('contato');
+      const conteudo = formData.get('conteudo_teste');
+      const atendimento = formData.get('atendimento_teste');
+      
+      const mensagem = encodeURIComponent(
+        `🎁 *SOLICITAÇÃO TESTE GRÁTIS*\n\n` +
+        `👤 *Nome:* ${nome}\n` +
+        `📱 *Contato:* ${contato}\n` +
+        `🎬 *Conteúdo:* ${conteudo}\n` +
+        `💬 *Atendimento via:* ${atendimento}`
+      );
+      
+      const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
+      const telegram = config.telegram_user || defaultConfig.telegram_user;
+      
+      if (atendimento === 'WhatsApp') {
+        window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
+      } else {
+        window.open(`https://t.me/${telegram}?text=${mensagem}`, '_blank');
+      }
+      
+      e.target.reset();
+      toggleContactField('teste');
+    });
 
-<div class="ad">ESPAÇO PARA ANÚNCIO (Google Ads)</div>
+    document.getElementById('form-revenda').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const nome = formData.get('nome');
+      const cidade = formData.get('cidade');
+      const contato = formData.get('contato');
+      const atendimento = formData.get('atendimento_revenda');
+      
+      const mensagem = encodeURIComponent(
+        `💰 *QUERO SER REVENDEDOR*\n\n` +
+        `👤 *Nome:* ${nome}\n` +
+        `📍 *Cidade:* ${cidade}\n` +
+        `📱 *Contato:* ${contato}\n` +
+        `💬 *Atendimento via:* ${atendimento}`
+      );
+      
+      const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
+      const telegram = config.telegram_user || defaultConfig.telegram_user;
+      
+      if (atendimento === 'WhatsApp') {
+        window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
+      } else {
+        window.open(`https://t.me/${telegram}?text=${mensagem}`, '_blank');
+      }
+      
+      e.target.reset();
+      toggleContactField('revenda');
+    });
 
-<section id="planos">
-<div class="container">
-<h2>Planos IPTV</h2>
-
-<div class="cards">
-<div class="card">
-<h3>Mensal</h3>
-<div class="price">R$ 35,00</div>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p><br>
-<button onclick="assinar('Mensal')">ASSINAR</button>
-</div>
-
-<div class="card">
-<h3>3 Meses</h3>
-<div class="price">R$ 79,90</div>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p><br>
-<button onclick="assinar('3 Meses')">ASSINAR</button>
-</div>
-
-<div class="card">
-<h3>6 Meses</h3>
-<div class="price">R$ 139,90</div>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p><br>
-<button onclick="assinar('6 Meses')">ASSINAR</button>
-</div>
-
-<div class="card">
-<h3>Anual</h3>
-<div class="price">R$ 259,90</div>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p><br>
-<button onclick="assinar('Anual')">ASSINAR</button>
-</div>
-</div>
-</div>
-</section>
-
-<section id="teste">
-<div class="container">
-<h2>Teste Grátis</h2>
-
-<form onsubmit="testeGratis(event)">
-<input required placeholder="Seu nome">
-<input required placeholder="WhatsApp (51...)">
-
-<div class="radio-group">
-<div class="radio-box" onclick="tipoTeste='Sem adultos'">Sem adultos</div>
-<div class="radio-box" onclick="tipoTeste='Com adultos'">Com adultos</div>
-</div>
-
-<button>ENVIAR</button>
-</form>
-</div>
-</section>
-
-<section>
-<div class="container">
-<h2>Seja um Revendedor</h2>
-<p>Ganhe dinheiro revendendo nossos planos com suporte total.</p>
-
-<form onsubmit="revenda(event)">
-<input required placeholder="Nome completo">
-<input required placeholder="Cidade">
-
-<div class="radio-group">
-<div class="radio-box" onclick="canal='Telegram'">Telegram</div>
-<div class="radio-box" onclick="canal='WhatsApp'">WhatsApp</div>
-</div>
-
-<input required placeholder="WhatsApp">
-<input required placeholder="E-mail">
-
-<button>QUERO SER REVENDEDOR</button>
-</form>
-</div>
-</section>
-
-<section>
-<div class="container">
-<h2>Comentários</h2>
-
-<div class="comment"><div class="stars">⭐⭐⭐⭐⭐</div><b>Carlos Silva</b><p>Imagem perfeita!</p></div>
-<div class="comment"><div class="stars">⭐⭐⭐⭐⭐</div><b>Ana Souza</b><p>Funciona liso na Smart TV.</p></div>
-<div class="comment"><div class="stars">⭐⭐⭐⭐⭐</div><b>João Pereira</b><p>Muito conteúdo.</p></div>
-<div class="comment"><div class="stars">⭐⭐⭐⭐⭐</div><b>Marcos Lima</b><p>Suporte rápido.</p></div>
-<div class="comment"><div class="stars">⭐⭐⭐⭐⭐</div><b>Fernanda Alves</b><p>Recomendo!</p></div>
-
-</div>
-</section>
-
-<section>
-<div class="container">
-<h2>FAQ</h2>
-
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">O que é IPTV?</div>
-<div class="faq-a">TV via internet.</div>
-</div>
-
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">Funciona em Smart TV?</div>
-<div class="faq-a">Sim, totalmente compatível.</div>
-</div>
-
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">Tem teste?</div>
-<div class="faq-a">Sim, teste grátis.</div>
-</div>
-
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">Tem fidelidade?</div>
-<div class="faq-a">Não.</div>
-</div>
-
-<div class="faq-item">
-<div class="faq-q" onclick="toggle(this)">Suporte?</div>
-<div class="faq-a">WhatsApp e Telegram.</div>
-</div>
-
-</div>
-</section>
-
-<footer>
-© 2025 Tech Play TV<br>
-Atendimento WhatsApp parceiro: Tech Play Digital
-</footer>
-
-<script>
-let tipoTeste="Sem adultos";
-let canal="WhatsApp";
-
-function scrollToId(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
-function assinar(plano){
-window.open(`https://wa.me/551999792104?text=`+
-encodeURIComponent(`Olá Tech Play TV, quero assinar o plano ${plano}.`));
-}
-
-function testeGratis(e){
-e.preventDefault();
-window.open(`https://wa.me/551999792104?text=`+
-encodeURIComponent(`Olá Tech Play TV, quero TESTE GRÁTIS. Tipo: ${tipoTeste}`));
-}
-
-function revenda(e){
-e.preventDefault();
-window.open(`https://wa.me/551999792104?text=`+
-encodeURIComponent(`Olá Tech Play TV, quero ser REVENDEDOR.`));
-}
-
-function toggle(el){
-const a=el.nextElementSibling;
-a.style.display=a.style.display==="block"?"none":"block";
-}
-</script>
-
-</body>
+    // Initialize UI
+    updateUI();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bea92597316cd97',t:'MTc2ODUzNDYxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
