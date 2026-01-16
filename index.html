@@ -192,6 +192,31 @@
       scrollbar-width: none;
     }
   </style>
+
+  .hero-techplay {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-techplay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(5, 20, 30, 0.85),
+      rgba(5, 20, 30, 0.95)
+    ),
+    url("/assets/bg-techplay.jpg") center / cover no-repeat;
+  filter: blur(2px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+}
   <style>@view-transition { navigation: auto; }
   .hero-techplay {
   min-height: 100vh;
