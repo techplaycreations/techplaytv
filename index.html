@@ -4,6 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Play TV - IPTV Premium</title>
+  
+  /* =====================
+   CSS ANTIGO DO SITE
+   ===================== */
+header { ... }
+main { ... }
+/* tudo que já existe */
+
+/* =========================
+   TECH PLAY TV - HERO IMAGEM
+   (COLE DAQUI PRA BAIXO)
+   ========================= */
+
+.hero-techplay {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-techplay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(5, 20, 30, 0.85),
+      rgba(5, 20, 30, 0.95)
+    ),
+    url("/assets/bg-techplay.jpg") center / cover no-repeat;
+  filter: blur(2px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+}
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <script src="/_sdk/element_sdk.js"></script>
