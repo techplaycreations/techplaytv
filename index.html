@@ -2,191 +2,278 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Tech Play TV | IPTV Premium</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Play TV</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#081a2b,#0c3f3a);
-  color:#fff;
-  text-align:center;
+background:radial-gradient(circle at top,#0f3d3a,#050b14);
+color:#eafaf5
 }
-section{padding:70px 20px}
-h1,h2,h3{margin-bottom:15px}
-p{line-height:1.7;max-width:900px;margin:0 auto 20px}
-img{max-width:100%;border-radius:18px}
+header{
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+.logo{
+color:#3cf2a3;
+font-size:20px;
+font-weight:bold
+}
+.menu{
+font-size:26px;
+cursor:pointer
+}
+.hero{
+max-width:900px;
+margin:30px auto;
+padding:40px 25px;
+background:linear-gradient(180deg,#0f2f2e,#0a141f);
+border-radius:20px;
+text-align:center
+}
+.hero span{
+background:#133f38;
+padding:6px 15px;
+border-radius:20px;
+color:#3cf2a3;
+font-size:14px
+}
+.hero h1{
+margin:20px 0;
+font-size:36px
+}
+.hero p{
+opacity:.85;
+margin-bottom:30px
+}
 .btn{
-  display:inline-block;
-  padding:15px 35px;
-  background:#00e0a8;
-  color:#000;
-  border-radius:30px;
-  font-weight:bold;
-  text-decoration:none;
-  cursor:pointer;
-  margin:10px
+display:inline-block;
+padding:15px 30px;
+border-radius:40px;
+font-weight:bold;
+cursor:pointer;
+border:none;
+font-size:16px
+}
+.btn-primary{
+background:linear-gradient(90deg,#3cf2a3,#3bd6f2);
+color:#022
+}
+.btn-outline{
+margin-top:15px;
+background:none;
+border:2px solid #3cf2a3;
+color:#3cf2a3
+}
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+margin-top:40px
+}
+.stat{
+background:#0c1f26;
+padding:20px;
+border-radius:15px
+}
+.section{
+max-width:1000px;
+margin:60px auto;
+padding:0 20px;
+text-align:center
+}
+.section h2{
+margin-bottom:20px;
+color:#3cf2a3
 }
 .cards{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:25px
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px
 }
 .card{
-  background:#0f2e44;
-  padding:30px;
-  border-radius:22px;
-  width:280px
+background:#0c1f26;
+padding:25px;
+border-radius:20px
 }
-.card p{margin:10px 0}
-.stars{color:#ffd700;font-size:18px;margin-bottom:5px}
-details{
-  background:#0f2e44;
-  border-radius:14px;
-  padding:18px;
-  margin:12px auto;
-  max-width:800px;
-  text-align:left;
-  cursor:pointer
+.card h3{
+margin-bottom:10px
 }
+.card ul{
+list-style:none;
+margin:15px 0
+}
+.card ul li{
+margin:5px 0;
+opacity:.9
+}
+.comments{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px
+}
+.comment{
+background:#0c1f26;
+padding:20px;
+border-radius:15px
+}
+.stars{color:#ffd700}
+.faq-item{
+background:#0c1f26;
+margin:10px 0;
+border-radius:10px;
+cursor:pointer;
+padding:15px;
+text-align:left
+}
+.faq-item p{display:none;opacity:.85;margin-top:10px}
 footer{
-  background:#06121c;
-  padding:30px;
-  font-size:14px
+margin-top:60px;
+padding:30px;
+text-align:center;
+opacity:.7
 }
+
+/* MODAL */
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  justify-content:center;
-  align-items:center;
-  z-index:999
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:10
 }
-.modal-box{
-  background:#0f2e44;
-  padding:25px;
-  border-radius:22px;
-  width:95%;
-  max-width:420px
+.modal-content{
+background:#0c1f26;
+padding:25px;
+border-radius:20px;
+width:90%;
+max-width:400px
 }
-input,select{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:none
+.modal-content h3{
+margin-bottom:15px
 }
-label{display:block;text-align:left;margin-top:10px}
-.close{float:right;font-size:18px;cursor:pointer}
+.modal-content input,.modal-content select{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+border:none
+}
+.close{
+margin-top:10px;
+background:none;
+color:#fff;
+border:none;
+cursor:pointer
+}
 </style>
 </head>
 
 <body>
 
-<section>
-<img src="banner-topo.jpg">
-<h1>Tech Play TV</h1>
-<p>IPTV Premium com qualidade e estabilidade</p>
-<a class="btn" onclick="abrirTeste()">TESTE GRÁTIS</a>
+<header>
+<div class="logo">TECH PLAY TV</div>
+<div class="menu">☰</div>
+</header>
+
+<section class="hero">
+<span>Streaming Premium 24/7</span>
+<h1>TECH PLAY TV<br>O Melhor IPTV do Brasil</h1>
+<p>Filmes, séries, novelas e canais ao vivo em um só lugar</p>
+<button class="btn btn-primary" onclick="openModal('teste')">🎬 TESTE GRÁTIS</button><br>
+<button class="btn btn-outline" onclick="scrollToPlanos()">📺 VER PLANOS</button>
+
+<div class="stats">
+<div class="stat"><h3>30.000+</h3><p>Filmes</p></div>
+<div class="stat"><h3>18.000+</h3><p>Séries</p></div>
+<div class="stat"><h3>2.847</h3><p>Novelas</p></div>
+<div class="stat"><h3>1.988</h3><p>Canais</p></div>
+</div>
 </section>
 
-<section>
+<section class="section">
 <h2>O que é IPTV?</h2>
-<p>
-IPTV é uma tecnologia moderna que permite assistir canais de TV ao vivo, filmes,
-séries, esportes e conteúdos sob demanda utilizando apenas a internet.  
-Diferente da TV a cabo tradicional, o IPTV não depende de antenas ou cabos físicos,
-oferecendo muito mais variedade, qualidade e economia.
-<br><br>
-O serviço funciona através de aplicativos compatíveis e pode ser instalado em
-Smart TVs, TV Box, celulares Android, iPhone (iOS), computadores e notebooks.
-Com uma boa conexão de internet, o usuário tem acesso a imagens em alta definição,
-transmissões estáveis e um catálogo completo sempre atualizado.
-<br><br>
-Na Tech Play TV você encontra milhares de filmes, séries, canais nacionais e
-internacionais, esportes, infantis e conteúdos exclusivos, tudo em um único serviço,
-com suporte e estabilidade.
-</p>
+<p>IPTV é uma tecnologia que transmite canais, filmes e séries pela internet, com alta qualidade, estabilidade e compatibilidade com Smart TV, TV Box, Android, iOS e PC. Você assiste tudo sob demanda, sem travamentos, com imagem em HD e Full HD.</p>
 </section>
 
-<section>
-<img src="imagem-meio-1.jpg">
-</section>
-
-<section id="planos">
+<section class="section" id="planos">
 <h2>Planos IPTV</h2>
 <div class="cards">
-
 <div class="card">
-<h3>Plano Mensal – R$ 35,00</h3>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-<a class="btn" onclick="abrirPlano('Mensal – R$ 35,00')">ASSINAR</a>
+<h3>Mensal – R$ 35,00</h3>
+<ul>
+<li>📺 30.000+ filmes</li>
+<li>🎬 18.000+ séries</li>
+<li>📡 1.988 canais</li>
+</ul>
+<button class="btn btn-primary" onclick="openModal('Mensal')">ASSINAR</button>
 </div>
 
 <div class="card">
-<h3>Plano 3 Meses – R$ 79,90</h3>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-<a class="btn" onclick="abrirPlano('3 Meses – R$ 79,90')">ASSINAR</a>
+<h3>3 Meses – R$ 79,90</h3>
+<ul>
+<li>📺 30.000+ filmes</li>
+<li>🎬 18.000+ séries</li>
+<li>📡 1.988 canais</li>
+</ul>
+<button class="btn btn-primary" onclick="openModal('3 Meses')">ASSINAR</button>
 </div>
 
 <div class="card">
-<h3>Plano 6 Meses – R$ 139,90</h3>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-<a class="btn" onclick="abrirPlano('6 Meses – R$ 139,90')">ASSINAR</a>
+<h3>6 Meses – R$ 139,90</h3>
+<ul>
+<li>📺 30.000+ filmes</li>
+<li>🎬 18.000+ séries</li>
+<li>📡 1.988 canais</li>
+</ul>
+<button class="btn btn-primary" onclick="openModal('6 Meses')">ASSINAR</button>
 </div>
 
 <div class="card">
-<h3>Plano Anual – R$ 259,90</h3>
-<p>📺 30.000+ filmes<br>🎬 18.000+ séries<br>📡 1.988 canais</p>
-<a class="btn" onclick="abrirPlano('Anual – R$ 259,90')">ASSINAR</a>
+<h3>Anual – R$ 259,90</h3>
+<ul>
+<li>📺 30.000+ filmes</li>
+<li>🎬 18.000+ séries</li>
+<li>📡 1.988 canais</li>
+</ul>
+<button class="btn btn-primary" onclick="openModal('Anual')">ASSINAR</button>
 </div>
-
 </div>
 </section>
 
-<section>
-<img src="imagem-meio-2.jpg">
-</section>
-
-<section>
+<section class="section">
 <h2>Comentários de Clientes</h2>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<strong>Carlos Henrique</strong>
-<p>Imagem excelente e muito estável.</p>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<strong>Juliana Martins</strong>
-<p>Funciona perfeito na Smart TV.</p>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<strong>Rafael Costa</strong>
-<p>Muito melhor que TV a cabo.</p>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<strong>Fernanda Lopes</strong>
-<p>Catálogo enorme de filmes e séries.</p>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<strong>Marcos Vinícius</strong>
-<p>Suporte rápido e serviço confiável.</p>
+<div class="comments">
+<div class="comment"><div class="stars">★★★★★</div><strong>Marcos Silva</strong><p>Imagem perfeita e suporte rápido.</p></div>
+<div class="comment"><div class="stars">★★★★★</div><strong>Ana Souza</strong><p>Melhor IPTV que já usei.</p></div>
+<div class="comment"><div class="stars">★★★★★</div><strong>Ricardo Lima</strong><p>Funciona liso na Smart TV.</p></div>
+<div class="comment"><div class="stars">★★★★★</div><strong>Juliana Costa</strong><p>Conteúdo completo demais.</p></div>
+<div class="comment"><div class="stars">★★★★★</div><strong>Paulo Rocha</strong><p>Recomendo sem medo.</p></div>
+</div>
 </section>
 
-<section>
+<section class="section">
 <h2>FAQ</h2>
-<details><summary>O que é IPTV?</summary>É TV por internet com canais, filmes e séries.</details>
-<details><summary>Funciona em Smart TV?</summary>Sim, Smart TV e TV Box.</details>
-<details><summary>Posso testar antes?</summary>Sim, oferecemos teste grátis.</details>
-<details><summary>Tem fidelidade?</summary>Não, você escolhe o plano.</details>
-<details><summary>Como funciona o suporte?</summary>Atendimento direto via WhatsApp e Telegram.</details>
+<div class="faq-item" onclick="toggleFaq(this)">
+<strong>Funciona em Smart TV?</strong>
+<p>Sim, funciona em Smart TVs compatíveis e TV Box.</p>
+</div>
+<div class="faq-item" onclick="toggleFaq(this)">
+<strong>Posso testar antes?</strong>
+<p>Sim, oferecemos teste grátis.</p>
+</div>
 </section>
 
-<section>
-<h2>Seja Revendedor</h2>
-<p>Trabalhe com IPTV, gere renda recorrente e tenha suporte completo.</p>
-<a class="btn" onclick="abrirRevenda()">QUERO SER REVENDEDOR</a>
+<section class="section">
+<h2>Seja um Revendedor</h2>
+<p>Ganhe dinheiro revendendo IPTV com suporte completo.</p>
+<button class="btn btn-primary" onclick="openModal('Revenda')">QUERO SER REVENDEDOR</button>
 </section>
 
 <footer>
@@ -195,67 +282,36 @@ Atendimento WhatsApp parceiro: Tech Play Digital
 </footer>
 
 <div class="modal" id="modal">
-  <div class="modal-box" id="modalBox"></div>
+<div class="modal-content">
+<h3 id="modalTitle"></h3>
+<input placeholder="Nome completo">
+<input placeholder="WhatsApp ex: 51 99979-2104">
+<input placeholder="Telegram ex: @techplaytv_oficial">
+<button class="btn btn-primary" onclick="send()">Enviar</button>
+<button class="close" onclick="closeModal()">Cancelar</button>
+</div>
 </div>
 
 <script>
-function abrirTeste(){
-document.getElementById("modalBox").innerHTML=`
-<span class="close" onclick="fechar()">✖</span>
-<h3>Teste Grátis</h3>
-<input id="nome" placeholder="Seu nome">
-<input id="whats" placeholder="WhatsApp 51999999999">
-<input id="telegram" placeholder="Telegram @usuario">
-<label><input type="radio" name="adulto" value="Sem adultos" checked> Sem adultos</label>
-<label><input type="radio" name="adulto" value="Com adultos"> Com adultos</label>
-<a class="btn" onclick="enviarTeste()">ENVIAR</a>`;
-document.getElementById("modal").style.display="flex";
+let plano="";
+function openModal(p){
+plano=p;
+document.getElementById("modalTitle").innerText=p==="teste"?"Teste Grátis":p==="Revenda"?"Revenda":"Assinar "+p;
+document.getElementById("modal").style.display="flex"
 }
-
-function abrirPlano(plano){
-document.getElementById("modalBox").innerHTML=`
-<span class="close" onclick="fechar()">✖</span>
-<h3>Plano ${plano}</h3>
-<input id="nome" placeholder="Seu nome">
-<input id="whats" placeholder="WhatsApp 51999999999">
-<input id="telegram" placeholder="Telegram @usuario">
-<label><input type="checkbox"> Smart TV</label>
-<label><input type="checkbox"> TV Box</label>
-<label><input type="checkbox"> Celular</label>
-<label><input type="checkbox"> PC</label>
-<a class="btn" onclick="enviarPlano('${plano}')">CONTINUAR</a>`;
-document.getElementById("modal").style.display="flex";
+function closeModal(){document.getElementById("modal").style.display="none"}
+function send(){
+let msg=encodeURIComponent("Olá Tech Play TV, quero "+plano);
+window.open("https://wa.me/551999792104?text="+msg,"_blank")
 }
-
-function abrirRevenda(){
-document.getElementById("modalBox").innerHTML=`
-<span class="close" onclick="fechar()">✖</span>
-<h3>Seja Revendedor</h3>
-<input id="nome" placeholder="Nome">
-<input id="cidade" placeholder="Cidade">
-<input id="whats" placeholder="WhatsApp">
-<input id="telegram" placeholder="Telegram">
-<a class="btn" onclick="enviarRevenda()">ENVIAR</a>`;
-document.getElementById("modal").style.display="flex";
+function toggleFaq(el){
+let p=el.querySelector("p");
+p.style.display=p.style.display==="block"?"none":"block"
 }
-
-function enviarTeste(){
-let tipo=document.querySelector('input[name="adulto"]:checked').value;
-window.location.href="https://wa.me/551999792104?text="+encodeURIComponent("Olá Tech Play TV, quero TESTE GRÁTIS. Tipo: "+tipo);
-}
-
-function enviarPlano(plano){
-window.location.href="https://wa.me/551999792104?text="+encodeURIComponent("Olá Tech Play TV, quero assinar o plano "+plano);
-}
-
-function enviarRevenda(){
-window.location.href="https://wa.me/551999792104?text="+encodeURIComponent("Olá Tech Play TV, quero ser revendedor.");
-}
-
-function fechar(){
-document.getElementById("modal").style.display="none";
+function scrollToPlanos(){
+document.getElementById("planos").scrollIntoView({behavior:"smooth"})
 }
 </script>
 
 </body>
- </html>
+</html>
