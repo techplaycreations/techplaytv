@@ -524,14 +524,35 @@
       </div>
      </div>
     </div>
-   </section><!-- Ad Space 1 -->
-   <section class="ads-section">
-  <iframe 
-    src="https://techplayeriptvads.blogspot.com/p/anuncios-tech-play-tv.html"
-    loading="lazy"
-    referrerpolicy="no-referrer"
-  ></iframe>
-</section>
+
+<!-- ADS DINÂMICOS -->
+<div class="ads-box">
+  <a id="adLink" target="_blank" rel="noopener">
+    <img id="adImg" alt="Anúncio Tech Play TV">
+  </a>
+</div>
+
+<script src="https://techplayeriptvads.blogspot.com/p/anuncios-data.html"></script>
+
+<script>
+let i = 0;
+
+function trocarAd() {
+  if (typeof ADS === "undefined" || ADS.length === 0) return;
+
+  const img = document.getElementById("adImg");
+  const link = document.getElementById("adLink");
+
+  img.src = ADS[i].img;
+  link.href = ADS[i].link;
+
+  i = (i + 1) % ADS.length;
+}
+
+trocarAd();
+setInterval(trocarAd, 6000);
+</script>
+    
     <div class="max-w-7xl mx-auto">
      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4"><span class="gradient-text">Escolha seu Plano</span></h2>
      <p class="text-white/50 text-center mb-12 max-w-2xl mx-auto">Todos os planos incluem acesso completo ao nosso catálogo premium</p>
