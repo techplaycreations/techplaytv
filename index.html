@@ -696,12 +696,33 @@
     </div>
    </section><!-- Ad Space 2 -->
    <section class="ads-section">
-  <iframe 
-    src="https://techplayeriptvads.blogspot.com/p/anuncios-tech-play-tv.html"
-    loading="lazy"
-    referrerpolicy="no-referrer"
-  ></iframe>
-</section>
+  <!-- Carrega os anúncios do Blogger -->
+<script src="https://techplayeriptvads.blogspot.com/p/anuncios-data.html"></script>
+
+<!-- Banner -->
+<a id="adLink" href="#" target="_blank">
+  <img id="adImg" alt="Anúncio" style="width:100%;display:block;border-radius:16px;">
+</a>
+
+<script>
+let i = 0;
+
+function trocarAd() {
+  if (typeof ADS === "undefined") return;
+
+  document.getElementById("adImg").src = ADS[i].img;
+  document.getElementById("adLink").href = ADS[i].link;
+
+  i = (i + 1) % ADS.length;
+}
+
+// primeiro anúncio instantâneo
+trocarAd();
+
+// troca automática
+setInterval(trocarAd, 5000);
+</script>
+    
    
    </section><!-- FAQ -->
    <section id="faq" class="py-20 px-4">
