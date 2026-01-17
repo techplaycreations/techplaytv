@@ -740,15 +740,29 @@ setInterval(trocarAd, 6000);
     </div>
    </section><!-- Ad Space 2 -->
    <section class="ads-section">
+  <a id="adLink2" href="#" target="_blank" rel="noopener">
+    <img id="adImg2" alt="Anúncio Tech Play TV" style="width:100%;display:block;border-radius:16px;">
+  </a>
+   </section>
   <!-- Carrega os anúncios do Blogger -->
 <script src="https://techplayeriptvads.blogspot.com/p/anuncio-2-tech-play-tv.html"></script>
 
-<!-- Banner -->
-<a id="adLink" href="#" target="_blank">
-  <img id="adImg" alt="Anúncio" style="width:100%;display:block;border-radius:16px;">
-</a>
-
 <script>
+let j = 0;
+
+function trocarAd2() {
+  if (typeof ADS2 === "undefined" || ADS2.length === 0) return;
+
+  document.getElementById("adImg2").src = ADS2[j].img;
+  document.getElementById("adLink2").href = ADS2[j].link;
+
+  j = (j + 1) % ADS2.length;
+}
+
+trocarAd2();
+setInterval(trocarAd2, 6000);
+</script>
+   
 let i = 0;
 
 function trocarAd() {
