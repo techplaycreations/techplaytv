@@ -8,34 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <script src="/_sdk/element_sdk.js"></script>
   <style>
-
-   .ads-section {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 15px;
-}
-
-.ads-section iframe {
-  width: 100%;
-  height: 180px; /* ajuste aqui */
-  border: none;
-  border-radius: 14px;
-  background: transparent;
-}
-   
-   .ads-section {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 15px;
-}
-
-.ads-section iframe {
-  width: 100%;
-  height: 180px; /* ajuste aqui */
-  border: none;
-  border-radius: 14px;
-  background: transparent;
-}
     body {
       box-sizing: border-box;
     }
@@ -185,12 +157,16 @@
       position: relative;
       width: 100%;
       height: 100vh;
-      min-height: 600px;
+      min-height: 100vh;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       padding-top: 60px;
+      background-image: url('./techplaytv.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .hero-techplay-bg {
@@ -200,13 +176,11 @@
       width: 100%;
       height: 100%;
       z-index: 1;
+      pointer-events: none;
     }
 
     .hero-techplay-bg-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      display: none;
     }
 
     .hero-techplay-overlay {
@@ -216,11 +190,10 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(180deg, 
-        rgba(10, 10, 15, 0.85) 0%, 
-        rgba(10, 10, 15, 0.75) 50%, 
-        rgba(10, 10, 15, 0.95) 100%
+        rgba(0, 0, 0, 0.65) 0%, 
+        rgba(0, 0, 0, 0.55) 50%, 
+        rgba(0, 0, 0, 0.70) 100%
       );
-      backdrop-filter: blur(2px);
     }
 
     .hero-techplay-content {
@@ -275,25 +248,29 @@
     }
 
     .hero-techplay-title-main {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 900;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
       line-height: 1;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     .hero-techplay-title-sub {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.2;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.3;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .hero-techplay-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 600px;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 700px;
       line-height: 1.6;
       margin: 0;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     .hero-techplay-buttons {
@@ -310,7 +287,7 @@
       font-weight: 700;
       font-size: 1.125rem;
       padding: 1rem 2.5rem;
-      border-radius: 50px;
+      border-radius: 999px;
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -331,8 +308,8 @@
       font-weight: 600;
       font-size: 1.125rem;
       padding: 1rem 2.5rem;
-      border-radius: 50px;
-      border: 2px solid rgba(0, 255, 136, 0.5);
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
@@ -342,10 +319,10 @@
     }
 
     .hero-techplay-btn-secondary:hover {
-      border-color: #00ff88;
-      background: rgba(0, 255, 136, 0.1);
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.1);
       transform: translateY(-3px);
-      box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
     }
 
     .hero-techplay-stats {
@@ -390,10 +367,10 @@
 
     @media (max-width: 640px) {
       .hero-techplay-section {
-        min-height: 500px;
-        height: auto;
+        min-height: 100vh;
+        height: 100vh;
         padding-top: 80px;
-        padding-bottom: 3rem;
+        padding-bottom: 2rem;
       }
 
       .hero-techplay-container {
@@ -434,169 +411,8 @@
         justify-content: space-around;
       }
     }
-
-   .ads-section {
-  width: 100%;
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 16px;
-}
-
-.ads-box {
-  width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 0 30px rgba(0,255,180,.15);
-}
-
-.ads-box img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-   <style>
-/* Container principal */
-.hero-techplay-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
-
-/* Título principal */
-.hero-techplay-title {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin: 0;
-    font-size: 2.5rem; /* tamanho do título principal */
-    font-weight: 900;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-}
-
-/* Subtítulo */
-.hero-techplay-subtitle {
-    font-size: 1.5rem; /* tamanho do subtítulo */
-    font-weight: 700;
-    color: rgba(255,255,255,0.9);
-    line-height: 1.2;
-}
-
-/* Texto menor (subtítulo extra) */
-.hero-techplay-subtext {
-    font-size: 1rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.7);
-    max-width: 600px;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Botões */
-.hero-techplay-btn-primary,
-.hero-techplay-btn-secondary {
-    width: 100%;
-    font-size: 1.125rem; /* aumenta o texto dos botões */
-    padding: 0.875rem 2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-
-/* Botão primário */
-.hero-techplay-btn-primary {
-    background: linear-gradient(135deg, #00ff88 0%, #00ccaa 100%);
-    color: #000;
-    font-weight: 700;
-}
-
-/* Botão secundário */
-.hero-techplay-btn-secondary {
-    background: transparent;
-    color: #fff;
-    font-weight: 600;
-    border: 2px solid rgba(0,255,136,0.5);
-}
-
-/* Responsivo para mobile */
-@media (max-width: 480px) {
-    .hero-techplay-container {
-        gap: 1rem;
-    }
-    .hero-techplay-btn-primary,
-    .hero-techplay-btn-secondary {
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
-    }
-    .hero-techplay-title {
-        font-size: 2rem;
-    }
-    .hero-techplay-subtitle {
-        font-size: 1.25rem;
-    }
-}
-
-   
-  iTop = (iTop + 1) % ADS.length;
-  iBottom = (iBottom + 1) % ADS.length;
-
-  // Evitar que os dois sejam iguais
-  if (iTop === iBottom) {
-    iBottom = (iBottom + 1) % ADS.length;
-  }
-}
-
-<script>
-/* =============================
-   ROTADOR DE ANÚNCIOS – SEGURO
-   ============================= */
-
-const ADS_TOP = [
-  {
-    img: "img/graduacao.jpg",
-    link: "https://afiliadoeducacionalfasul.com.br/168002025/graduacao/cursos-graduacao-ead"
-  },
-  {
-    img: "img/cursos-livres.jpg",
-    link: "https://afiliadoeducacionalfasul.com.br/168002025/cursos-livres"
-  },
-  {
-    img: "img/pos.jpg",
-    link: "https://afiliadoeducacionalfasul.com.br/168002025/posgraduacao/cursos"
-  }
-];
-
-let adIndex = 0;
-
-// Elementos (precisam existir no HTML)
-const adLink = document.querySelector(".ad-section a");
-const adImg  = document.querySelector(".ad-section img");
-
-function trocarAnuncio() {
-  adIndex = (adIndex + 1) % ADS_TOP.length;
-
-  adImg.src = ADS_TOP[adIndex].img;
-  adLink.href = ADS_TOP[adIndex].link;
-}
-
-// Inicia após carregar DOM
-document.addEventListener("DOMContentLoaded", () => {
-  trocarAnuncio();
-  setInterval(trocarAnuncio, 20000); // 20 segundos
-});
-</script>
-  
-  <style>@view-transion { navigation: auto; }</style>
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full gradient-bg text-white overflow-auto scrollbar-hide">
@@ -616,7 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
      </svg></button> <a href="#planos" class="text-2xl hover:text-[#00ff88] transition mobile-link">Planos</a> <a href="#teste" class="text-2xl hover:text-[#00ff88] transition mobile-link">Teste Grátis</a> <a href="#faq" class="text-2xl hover:text-[#00ff88] transition mobile-link">FAQ</a> <a href="#revenda" class="text-2xl hover:text-[#00ff88] transition mobile-link">Revenda</a>
    </div><!-- Hero Section -->
    <section class="hero-techplay-section"><!-- Background Image with Overlay -->
-    <div class="hero-techplay-bg"><img src="techplaytv.jpg" alt="Tech Play TV" loading="lazy" class="hero-techplay-bg-img" onerror="this.style.display='none'">
+    <div class="hero-techplay-bg"><img src="banner.jpg" alt="Tech Play TV" loading="lazy" class="hero-techplay-bg-img" onerror="this.style.display='none'">
      <div class="hero-techplay-overlay"></div>
     </div><!-- Hero Content -->
     <div class="hero-techplay-content">
@@ -681,63 +497,21 @@ document.addEventListener("DOMContentLoaded", () => {
        <div class="flex flex-wrap gap-4 mt-4"><span class="px-4 py-2 bg-white/5 rounded-full text-sm">📺 Smart TV</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">📦 TV Box</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">🤖 Android</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">🍎 iOS</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">💻 PC</span> <span class="px-4 py-2 bg-white/5 rounded-full text-sm">💻 Notebook</span>
        </div>
        <h3 class="text-xl font-semibold text-white mt-8">⚡ Instalação Simples</h3>
-       <p>A configuração é rápida e fácil! Nossa equipe oferece suporte completo via WhatsApp ou Telegram para ajudar você em cada etapa. Em poucos minutos você estará aproveitando todo o conteúdo.</p>
+       <p>A configuração é rápida e fácil! Nossa equipe oferece suporte completo via WhatsApp ou Telegram para ajudar você em cada etapa. Em poucos minutos você estar�� aproveitando todo o conteúdo.</p>
       </div>
      </div>
     </div>
-
-<!-- ADS DINÂMICOS -->
-
-
-<style>
-/* CSS dos anúncios */
-#adLinkTop img,
-#adLinkBottom img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 14px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 40px;
-  transition: transform 0.3s ease;
-}
-#adLinkTop img:hover,
-#adLinkBottom img:hover {
-  transform: scale(1.03);
-}
-
-@media (max-width: 480px) {
-  #adLinkTop img,
-  #adLinkBottom img {
-    max-height: 150px;
-  }
-}   
-    
-</a> 
-
-<script>
-let i = 0;
-
-function trocarAd() {
-  if (typeof ADS === "undefined" || ADS.length === 0) return;
-
-  const img = document.getElementById("adImg");
-  const link = document.getElementById("adLink");
-
-  img.src = ADS[i].img;
-  link.href = ADS[i].link;
-
-  i = (i + 1) % ADS.length;
-}
-
-trocarAd();
-setInterval(trocarAd, 6000);
-</script>
-
+   </section><!-- Ad Space 1 -->
+   <section class="py-8 px-4" style="background-image: url('techplaytv.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
+    <div style="position: absolute; inset: 0; background: rgba(10, 10, 15, 0.85);"></div>
+    <div class="max-w-4xl mx-auto" style="position: relative; z-index: 1;">
+     <div class="ad-space rounded-2xl p-8 text-center"><a id="ad-link-1" href="#" target="_blank" rel="noopener noreferrer" style="display: block;"> <img id="ad-banner-1" src="" alt="Anúncio" class="w-full h-auto rounded-xl" style="transition: opacity 0.5s ease;"> </a>
+     </div>
+    </div>
+   </section><!-- Planos -->
+   <section id="planos" class="py-20 px-4">
     <div class="max-w-7xl mx-auto">
-  
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4"><span class="gradient-text">Escolha seu Plano</span></h2>
+     <h2 class="text-3xl md:text-4xl font-bold text-center mb-4"><span class="gradient-text">Escolha seu Plano</span></h2>
      <p class="text-white/50 text-center mb-12 max-w-2xl mx-auto">Todos os planos incluem acesso completo ao nosso catálogo premium</p>
      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Plano Mensal -->
       <div class="plan-card rounded-3xl p-8 text-center card-glow">
@@ -745,11 +519,28 @@ setInterval(trocarAd, 6000);
         📅
        </div>
        <h3 class="text-xl font-bold mb-2">Mensal</h3>
-      <div class="text-4xl font-black gradient-text mb-6">
+       <div class="text-4xl font-black gradient-text mb-6">
         R$ 35<span class="text-lg">,00</span>
        </div>
        <ul class="space-y-3 text-white/70 text-sm mb-8 text-left">
         <li>✓ Todos os canais disponíveis</li>
+        <li>✓ Filmes e séries ilimitados</li>
+        <li>✓ Qualidade HD/Full HD/4K</li>
+        <li>✓ Suporte técnico</li>
+        <li>✓ Atualizações constantes</li>
+       </ul><button class="btn-assinar btn-primary w-full py-4 rounded-xl text-lg font-bold" data-plano="Mensal - R$ 35,00"> ASSINAR </button>
+      </div><!-- Plano 3 Meses -->
+      <div class="plan-card rounded-3xl p-8 text-center card-glow">
+       <div class="text-4xl mb-4">
+        🗓️
+       </div>
+       <h3 class="text-xl font-bold mb-2">Trimestral</h3>
+       <div class="text-4xl font-black gradient-text mb-6">
+        R$ 79<span class="text-lg">,90</span>
+       </div>
+       <ul class="space-y-3 text-white/70 text-sm mb-8 text-left">
+        <li>✓ Todos os canais disponíveis</li>
+        </li>
         <li>✓ Filmes e séries ilimitados</li>
         <li>✓ Qualidade HD/Full HD/4K</li>
         <li>✓ Suporte técnico</li>
@@ -898,33 +689,13 @@ setInterval(trocarAd, 6000);
       </div>
      </div>
     </div>
-   </section>
-
-   /* ===== Estilo para ANÚNCIO 2 (INFERIOR) ===== */
-<a id="adBottom" target="_blank">
-  <img id="adImgBottom" src="img/cursos-livres.jpg" alt="Anúncio Bottom" />
-</a>
-<script>
-const ADS_BOTTOM = [
-  { img: "img/cursos-livres.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/cursos-livres" },
-  { img: "img/curso-ia.jpg", link: "https://inteligenciaiaartificial.com.br/?code=16800&type=A&channel=A" },
-  { img: "img/quintoandar.jpg", link: "https://quin.to/drhpiada?codigo=OPn22" },
-  { img: "img/cursos-motoristas.jpg", link: "https://wa.me/551999792104?text=Ol%C3%A1%20Tech%20Play%20Digital%2C%20eu%20quero%20saber%20mais%20sobre%20os%20cursos%20pra%20motoristas" }
-];
-let iBottom = 0;
-const imgBottom = document.getElementById("adImgBottom");
-const linkBottom = document.getElementById("adBottom");
-function trocarAdBottom() {
-  imgBottom.src = ADS_BOTTOM[iBottom].img;
-  linkBottom.href = ADS_BOTTOM[iBottom].link;
-  iBottom = (iBottom + 1) % ADS_BOTTOM.length;
-}
-trocarAdBottom();
-setInterval(trocarAdBottom, 20000);
-</script>
-   
-    
-   
+   </section><!-- Ad Space 2 -->
+   <section class="py-8 px-4" style="background-image: url('techplaytv.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
+    <div style="position: absolute; inset: 0; background: rgba(10, 10, 15, 0.85);"></div>
+    <div class="max-w-4xl mx-auto" style="position: relative; z-index: 1;">
+     <div class="ad-space rounded-2xl p-8 text-center"><a id="ad-link-2" href="#" target="_blank" rel="noopener noreferrer" style="display: block;"> <img id="ad-banner-2" src="" alt="Anúncio" class="w-full h-auto rounded-xl" style="transition: opacity 0.5s ease;"> </a>
+     </div>
+    </div>
    </section><!-- FAQ -->
    <section id="faq" class="py-20 px-4">
     <div class="max-w-3xl mx-auto">
@@ -952,12 +723,12 @@ setInterval(trocarAdBottom, 20000);
       </div><!-- FAQ 5 -->
       <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Como funciona o suporte?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
        <div class="faq-content px-6 pb-5">
-        <p class="text-white/70">Nosso suporte está disponível 24/7 via WhatsApp e Telegram. Nossa equipe está sempre pronta para ajudar com instalação, configuração e qualquer dúvida!</p>
+        <p class="text-white/70">Nosso suporte está disponível 24/7 via WhatsApp e Telegram. Nossa equipe está sempre pronta para ajudar com instalação, configuraç�����o e qualquer d��vida!</p>
        </div>
       </div><!-- FAQ 6 -->
       <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Posso usar em mais de um dispositivo?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
        <div class="faq-content px-6 pb-5">
-        <p class="text-white/70">Cada assinatura é para 1 dispositivo. Se precisar usar em mais aparelhos, consulte nossos planos multi-tela ou faça múltiplas assinaturas com desconto especial!</p>
+        <p class="text-white/70">Cada assinatura é para 1 dispositivo. Se precisar usar em mais aparelhos, consulte nossos planos multi-tela ou faça m����ltiplas assinaturas com desconto especial!</p>
        </div>
       </div>
      </div>
@@ -969,7 +740,7 @@ setInterval(trocarAdBottom, 20000);
      <div class="plan-card rounded-3xl p-8 md:p-12 card-glow">
       <div class="text-center mb-8">
        <div class="text-6xl mb-4">
-        💰
+        ��
        </div>
        <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Seja um Revendedor</span></h2>
        <p class="text-white/60 max-w-lg mx-auto">Ganhe dinheiro revendendo nossos planos. Comissões atrativas e suporte total para você crescer!</p>
@@ -1218,7 +989,7 @@ setInterval(trocarAdBottom, 20000);
       const atendimento = formData.get('atendimento');
       
       const mensagem = encodeURIComponent(
-        `🔔 *NOVA ASSINATURA*\n\n` +
+        `��� *NOVA ASSINATURA*\n\n` +
         `📋 *Plano:* ${selectedPlan}\n` +
         `👤 *Nome:* ${nome}\n` +
         `📱 *Contato:* ${contato}\n` +
@@ -1255,7 +1026,7 @@ setInterval(trocarAdBottom, 20000);
         `🎁 *SOLICITAÇÃO TESTE GRÁTIS*\n\n` +
         `👤 *Nome:* ${nome}\n` +
         `📱 *Contato:* ${contato}\n` +
-        `📺 *Dispositivos:* ${dispositivos}\n` +
+        `��� *Dispositivos:* ${dispositivos}\n` +
         `🎬 *Conteúdo:* ${conteudo}\n` +
         `💬 *Atendimento via:* ${atendimento}`
       );
@@ -1304,6 +1075,66 @@ setInterval(trocarAdBottom, 20000);
 
     // Initialize UI
     updateUI();
+
+    // Ad rotation system
+    const adBanners = [
+      {
+        img: 'img/graduacao.jpg',
+        link: 'https://afiliadoeducacionalfasul.com.br/168002025/graduacao/cursos-graduacao-ead'
+      },
+      {
+        img: 'img/posgraduacao.jpg',
+        link: 'https://afiliadoeducacionalfasul.com.br/168002025/posgraduacao/cursos'
+      },
+      {
+        img: 'img/cursos-livres.jpg',
+        link: 'https://afiliadoeducacionalfasul.com.br/168002025/cursos-livres'
+      },
+      {
+        img: 'img/curso-ia.jpg',
+        link: 'https://inteligenciaiaartificial.com.br/?code=16800&type=A&channel=A'
+      },
+      {
+        img: 'img/quintoandar.jpg',
+        link: 'https://quin.to/drhpiada?codigo=OPn22'
+      },
+      {
+        img: 'img/cursos-motoristas.jpg',
+        link: 'https://wa.me/?text=' + encodeURIComponent('Olá Tech Play Digital, quero saber mais sobre os cursos pra motoristas!')
+      }
+    ];
+
+    let currentAdIndex1 = 0;
+    let currentAdIndex2 = 1;
+
+    function updateAd(adId, linkId, index) {
+      const adImg = document.getElementById(adId);
+      const adLink = document.getElementById(linkId);
+      
+      adImg.style.opacity = '0';
+      
+      setTimeout(() => {
+        adImg.src = adBanners[index].img;
+        adLink.href = adBanners[index].link;
+        adImg.style.opacity = '1';
+      }, 500);
+    }
+
+    function rotateAds() {
+      currentAdIndex1 = (currentAdIndex1 + 1) % adBanners.length;
+      currentAdIndex2 = (currentAdIndex2 + 1) % adBanners.length;
+      
+      updateAd('ad-banner-1', 'ad-link-1', currentAdIndex1);
+      updateAd('ad-banner-2', 'ad-link-2', currentAdIndex2);
+    }
+
+    // Initialize first ads
+    updateAd('ad-banner-1', 'ad-link-1', currentAdIndex1);
+    updateAd('ad-banner-2', 'ad-link-2', currentAdIndex2);
+
+    // Rotate every 20 seconds
+    setInterval(rotateAds, 20000);
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bf0abee715246cf',t:'MTc2ODU5ODU4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c005b5c70f4e550',t:'MTc2ODc2MzA1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+                                                                                                                                                                                                                    </html>
+                                                                                                                                                                                                                    
