@@ -556,24 +556,44 @@
   }
 }
 
-/* ===== Estilo para ANÚNCIO 1 (TOPO) ===== */
-#<a id="adTop" target="_blank">
-  <img id="adImgTop" src="img/graduacao.jpg" alt="Anúncio Top" />
-</a>
 <script>
+/* =============================
+   ROTADOR DE ANÚNCIOS – SEGURO
+   ============================= */
+
 const ADS_TOP = [
-  { img: "img/graduacao.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/graduacao/cursos-graduacao-ead" },
+  {
+    img: "img/graduacao.jpg",
+    link: "https://afiliadoeducacionalfasul.com.br/168002025/graduacao/cursos-graduacao-ead"
+  },
+  {
+    img: "img/cursos-livres.jpg",
+    link: "https://afiliadoeducacionalfasul.com.br/168002025/cursos-livres"
+  },
+  {
+    img: "img/pos.jpg",
+    link: "https://afiliadoeducacionalfasul.com.br/168002025/posgraduacao/cursos"
+  }
 ];
-let iTop = 0;
-const imgTop = document.getElementById("adImgTop");
-const linkTop = document.getElementById("adTop");
-function trocarAdTop() {
-  imgTop.src = ADS_TOP[iTop].img;
-  linkTop.href = ADS_TOP[iTop].link;
-  iTop = (iTop + 1) % ADS_TOP.length;
+
+let adIndex = 0;
+
+// Elementos (precisam existir no HTML)
+const adLink = document.querySelector(".ad-section a");
+const adImg  = document.querySelector(".ad-section img");
+
+function trocarAnuncio() {
+  adIndex = (adIndex + 1) % ADS_TOP.length;
+
+  adImg.src = ADS_TOP[adIndex].img;
+  adLink.href = ADS_TOP[adIndex].link;
 }
-trocarAdTop();
-setInterval(trocarAdTop, 20000);
+
+// Inicia após carregar DOM
+document.addEventListener("DOMContentLoaded", () => {
+  trocarAnuncio();
+  setInterval(trocarAnuncio, 20000); // 20 segundos
+});
 </script>
   
   <style>@view-transion { navigation: auto; }</style>
