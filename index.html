@@ -641,9 +641,41 @@
 
 <!-- ADS DINÂMICOS -->
 
- <style <a id="adLinkTop" target="_blank">
+<!-- ANÚNCIO TOPO -->
+<a id="adLinkTop" target="_blank">
   <img id="adImgTop" src="img/graduacao.jpg" alt="Anúncio Top" />
 </a>
+
+<!-- ANÚNCIO BOTTOM -->
+<a id="adLinkBottom" target="_blank">
+  <img id="adImgBottom" src="img/cursos-livres.jpg" alt="Anúncio Bottom" />
+</a>
+
+<style>
+/* CSS dos anúncios */
+#adLinkTop img,
+#adLinkBottom img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+}
+#adLinkTop img:hover,
+#adLinkBottom img:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 480px) {
+  #adLinkTop img,
+  #adLinkBottom img {
+    max-height: 150px;
+  }
+}
+</style>
 
 <script>
 const ADS_TOP = [
@@ -663,29 +695,28 @@ function trocarAdTop() {
 
 trocarAdTop();
 setInterval(trocarAdTop, 6000);
+
+const ADS_BOTTOM = [
+  { img: "img/cursos-livres.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/cursos-livres" },
+  { img: "img/curso-ia.jpg", link: "https://inteligenciaiaartificial.com.br/?code=16800&type=A&channel=A" },
+  { img: "img/quintoandar.jpg", link: "https://quin.to/drhpiada?codigo=OPn22" },
+  { img: "img/cursos-motoristas.jpg", link: "https://wa.me/551999792104?text=Ol%C3%A1%20Tech%20Play%20Digital%2C%20eu%20quero%20saber%20mais%20sobre%20os%20cursos%20pra%20motoristas" }
+];
+
+let iBottom = 0;
+const imgBottom = document.getElementById("adImgBottom");
+const linkBottom = document.getElementById("adLinkBottom");
+
+function trocarAdBottom() {
+  imgBottom.src = ADS_BOTTOM[iBottom].img;
+  linkBottom.href = ADS_BOTTOM[iBottom].link;
+  iBottom = (iBottom + 1) % ADS_BOTTOM.length;
+}
+
+trocarAdBottom();
+setInterval(trocarAdBottom, 6000);
 </script>
 
-<style>
-#adLinkTop img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 14px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-#adLinkTop img:hover {
-  transform: scale(1.03);
-}
-
-@media (max-width: 480px) {
-  #adLinkTop img {
-    max-height: 150px;
-  }
-}
-</style>
     
     
 </a> 
@@ -724,7 +755,7 @@ setInterval(trocarAd, 6000);
         📅
        </div>
        <h3 class="text-xl font-bold mb-2">Mensal</h3>
-       <div class="text-4xl font-black gradient-text mb-6">
+      <div class="text-4xl font-black gradient-text mb-6">
         R$ 35<span class="text-lg">,00</span>
        </div>
        <ul class="space-y-3 text-white/70 text-sm mb-8 text-left">
