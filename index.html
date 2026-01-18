@@ -705,47 +705,6 @@ setInterval(trocarAdTop, 20000);
     max-height: 150px;
   }
 }
-</style>
-
-<script>
-const ADS_TOP = [
-  { img: "img/graduacao.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/graduacao/cursos-graduacao-ead" },
-  { img: "img/posgraduacao.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/posgraduacao/cursos" }
-];
-
-let iTop = 0;
-const imgTop = document.getElementById("adImgTop");
-const linkTop = document.getElementById("adLinkTop");
-
-function trocarAdTop() {
-  imgTop.src = ADS_TOP[iTop].img;
-  linkTop.href = ADS_TOP[iTop].link;
-  iTop = (iTop + 1) % ADS_TOP.length;
-}
-
-trocarAdTop();
-setInterval(trocarAdTop, 6000);
-
-const ADS_BOTTOM = [
-  { img: "img/cursos-livres.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/cursos-livres" },
-  { img: "img/curso-ia.jpg", link: "https://inteligenciaiaartificial.com.br/?code=16800&type=A&channel=A" },
-  { img: "img/quintoandar.jpg", link: "https://quin.to/drhpiada?codigo=OPn22" },
-  { img: "img/cursos-motoristas.jpg", link: "https://wa.me/551999792104?text=Ol%C3%A1%20Tech%20Play%20Digital%2C%20eu%20quero%20saber%20mais%20sobre%20os%20cursos%20pra%20motoristas" }
-];
-
-let iBottom = 0;
-const imgBottom = document.getElementById("adImgBottom");
-const linkBottom = document.getElementById("adLinkBottom");
-
-function trocarAdBottom() {
-  imgBottom.src = ADS_BOTTOM[iBottom].img;
-  linkBottom.href = ADS_BOTTOM[iBottom].link;
-  iBottom = (iBottom + 1) % ADS_BOTTOM.length;
-}
-
-trocarAdBottom();
-setInterval(trocarAdBottom, 6000);
-</script>
 
     
     
