@@ -557,27 +557,25 @@
 }
 
 /* ===== Estilo para ANÚNCIO 1 (TOPO) ===== */
-#adTop {
-  display: block;
-  text-align: center;
-  margin: 40px auto; /* espaço acima e abaixo */
+#<a id="adTop" target="_blank">
+  <img id="adImgTop" src="img/graduacao.jpg" alt="Anúncio Top" />
+</a>
+<script>
+const ADS_TOP = [
+  { img: "img/graduacao.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/graduacao/cursos-graduacao-ead" },
+  { img: "img/posgraduacao.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/posgraduacao/cursos" }
+];
+let iTop = 0;
+const imgTop = document.getElementById("adImgTop");
+const linkTop = document.getElementById("adTop");
+function trocarAdTop() {
+  imgTop.src = ADS_TOP[iTop].img;
+  linkTop.href = ADS_TOP[iTop].link;
+  iTop = (iTop + 1) % ADS_TOP.length;
 }
-
-#adTop img {
-  width: 100%;
-  max-width: 1100px; /* tamanho máximo do banner */
-  height: auto;
-  border-radius: 14px;
-  cursor: pointer;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-/* Hover efeito */
-#adTop img:hover {
-  transform: scale(1.03);
-}
-  
+trocarAdTop();
+setInterval(trocarAdTop, 20000);
+</script>
   
  
   
@@ -943,33 +941,27 @@ setInterval(trocarAd, 6000);
    </section>
 
    /* ===== Estilo para ANÚNCIO 2 (INFERIOR) ===== */
-#adBottom {
-  display: block;
-  text-align: center;
-  margin: 40px auto; /* espaço acima e abaixo */
+<a id="adBottom" target="_blank">
+  <img id="adImgBottom" src="img/cursos-livres.jpg" alt="Anúncio Bottom" />
+</a>
+<script>
+const ADS_BOTTOM = [
+  { img: "img/cursos-livres.jpg", link: "https://afiliadoeducacionalfasul.com.br/168002025/cursos-livres" },
+  { img: "img/curso-ia.jpg", link: "https://inteligenciaiaartificial.com.br/?code=16800&type=A&channel=A" },
+  { img: "img/quintoandar.jpg", link: "https://quin.to/drhpiada?codigo=OPn22" },
+  { img: "img/cursos-motoristas.jpg", link: "https://wa.me/551999792104?text=Ol%C3%A1%20Tech%20Play%20Digital%2C%20eu%20quero%20saber%20mais%20sobre%20os%20cursos%20pra%20motoristas" }
+];
+let iBottom = 0;
+const imgBottom = document.getElementById("adImgBottom");
+const linkBottom = document.getElementById("adBottom");
+function trocarAdBottom() {
+  imgBottom.src = ADS_BOTTOM[iBottom].img;
+  linkBottom.href = ADS_BOTTOM[iBottom].link;
+  iBottom = (iBottom + 1) % ADS_BOTTOM.length;
 }
-
-#adBottom img {
-  width: 100%;
-  max-width: 1100px; /* tamanho máximo do banner */
-  height: auto;
-  border-radius: 14px;
-  cursor: pointer;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-/* Hover efeito */
-#adBottom img:hover {
-  transform: scale(1.03);
-}
-
-/* ===== Mobile ANÚNCIO 2 ===== */
-@media (max-width: 480px) {
-  #adBottom img {
-    max-width: 100%;
-  }
-} 
+trocarAdBottom();
+setInterval(trocarAdBottom, 20000);
+</script>
    
     
    
