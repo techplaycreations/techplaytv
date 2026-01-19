@@ -835,6 +835,40 @@
     </div>
    </div>
   </div>
+
+  
+  <script>
+  const deviceIconsMap = {
+    "Smart TV": "fa-tv",
+    "TV Box": "fa-box",
+    "Celular": "fa-mobile-screen-button",
+    "PC": "fa-desktop"
+  };
+
+  const checkboxes = document.querySelectorAll(
+    'input[name="dispositivos_teste"]'
+  );
+
+  const iconsContainer = document.getElementById("device-icons");
+
+  function updateDeviceIcons() {
+    iconsContainer.innerHTML = "";
+
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        const icon = document.createElement("i");
+        icon.className = `fa-solid ${deviceIconsMap[cb.value]}`;
+        iconsContainer.appendChild(icon);
+      }
+    });
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener("change", updateDeviceIcons);
+  });
+  </script>
+
+  
   <script>
     // Config
     const defaultConfig = {
