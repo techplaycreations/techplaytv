@@ -875,6 +875,19 @@
 <input type="checkbox" name="dispositivos" value="PC">
 
 
+  function formatarDispositivosComIcones(dispositivosArray) {
+  const icons = {
+    "Smart TV": "📺",
+    "TV Box": "📺",
+    "PC": "💻",
+    "Celular": "📱",
+    "Notebook": "💻"
+  };
+
+  return dispositivosArray
+    .map(d => `${icons[d] || "📦"} ${d}`)
+    .join(", ");
+}
   
   <script>
     // Config
