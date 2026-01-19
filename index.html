@@ -890,7 +890,25 @@
 }
   
   <script>
-    // Config
+    
+   function formatarDispositivosComIcones(dispositivosArray) {
+  return dispositivosArray
+    .map(d => {
+      const dispositivo = d.trim().toLowerCase();
+
+      if (dispositivo.includes("tv")) return "📺 Smart TV";
+      if (dispositivo.includes("box")) return "📦 TV Box";
+      if (dispositivo.includes("pc") || dispositivo.includes("computador")) return "💻 PC";
+      if (dispositivo.includes("celular") || dispositivo.includes("mobile")) return "📱 Celular";
+      if (dispositivo.includes("notebook")) return "💻 Notebook";
+
+      return `📦 ${d}`;
+    })
+    .join(", ");
+   }
+
+   
+   // Config
     const defaultConfig = {
       site_title: 'TECH PLAY TV',
       hero_subtitle: 'IPTV Premium com qualidade e estabilidade',
