@@ -1082,7 +1082,10 @@
       if (atendimento === 'WhatsApp') {
         window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
       } else {
-        window.open(`https://t.me/${telegram}?text=${mensagem}`, '_blank');
+        window.open(
+  `https://t.me/share/url?text=${mensagem}`,
+  "_blank"
+);
       }
       
       modal.classList.add('hidden');
@@ -1115,7 +1118,10 @@
       if (atendimento === 'WhatsApp') {
         window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
       } else {
-        window.open(`https://t.me/${telegram}?text=${mensagem}`, '_blank');
+        window.open(
+  `https://t.me/share/url?text=${mensagem}`,
+  "_blank"
+);
       }
       
       e.target.reset();
@@ -1144,7 +1150,10 @@
       if (atendimento === 'WhatsApp') {
         window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
       } else {
-        window.open(`https://t.me/${telegram}?text=${mensagem}`, '_blank');
+        window.open(
+  `https://t.me/share/url?text=${mensagem}`,
+  "_blank"
+); 
       }
       
       e.target.reset();
