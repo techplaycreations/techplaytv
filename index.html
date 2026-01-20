@@ -1062,7 +1062,7 @@
       const formData = new FormData(e.target);
       const nome = formData.get('nome');
       const contato = formData.get('contato');
-      const dispositivos = formData.getAll('dispositivos').join(', ') || 'Não especificado';
+      const dispositivos = formData.get('dispositivos').join(', ') || 'Não especificado';
       const conteudo = formData.get('conteudo');
       const atendimento = formData.get('atendimento');
       
@@ -1099,7 +1099,7 @@
       const formData = new FormData(e.target);
       const nome = formData.get('nome');
       const contato = formData.get('contato');
-      const dispositivos = formData.getAll('dispositivos_teste').join(', ') || 'Não especificado';
+      const dispositivos = formData.get('dispositivos_teste').join(', ') || 'Não especificado';
       const conteudo = formData.get('conteudo_teste');
       const atendimento = formData.get('atendimento_teste');
       
