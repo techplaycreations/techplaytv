@@ -120,10 +120,9 @@
       background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);
       border: 1px solid rgba(0, 255, 136, 0.2);
     }
-    ..ad-space {
-  border: 2px dashed transparent;
-   }
-   
+    .ad-space {
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.02);
     }
     .animate-float {
       animation: float 3s ease-in-out infinite;
@@ -157,8 +156,8 @@
     .hero-techplay-section {
       position: relative;
       width: 100%;
-      height: 100vh;
-      min-height: 100vh;
+      height: 100%;
+      min-height: 100%;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -365,12 +364,11 @@
       height: 40px;
       background: rgba(255, 255, 255, 0.15);
     }
-   
 
     @media (max-width: 640px) {
       .hero-techplay-section {
-        min-height: 100vh;
-        height: 100vh;
+        min-height: 100%;
+        height: 100%;
         padding-top: 80px;
         padding-bottom: 2rem;
       }
@@ -413,30 +411,6 @@
         justify-content: space-around;
       }
     }
-
-
-@media (max-width: 768px) {
-  .ad-space {
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-
-  .ad-space img,
-  .ad-space iframe {
-    width: 100%;
-    border-radius: 0;
-  }
-}
-
-   .ad-space {
-  background: transparent;
-   }
-   
-
-   
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -464,17 +438,9 @@
     <div class="hero-techplay-content">
      <div class="hero-techplay-container"><!-- Badge Premium -->
       <div class="hero-techplay-badge"><span class="hero-techplay-badge-dot">●</span> <span>Streaming Premium 24/7</span>
-      </div>
-      <!-- Main Title -->
-
-<p id="hero-title" class="hero-techplay-title-main gradient-text">
-  O Melhor IPTV do Brasil
-</p>
-
-<p id="hero-subtitle" class="hero-techplay-subtitle">
-  Filmes, séries, novelas e canais ao vivo em um só lugar
-</p>
-      <!-- CTA Buttons -->
+      </div><!-- Main Title -->
+      <h1 id="hero-title" class="hero-techplay-title"><span class="hero-techplay-title-main gradient-text">TECH PLAY TV</span> <span class="hero-techplay-title-sub">O Melhor IPTV do Brasil</span></h1><!-- Subtitle -->
+      <p id="hero-subtitle" class="hero-techplay-subtitle">Filmes, séries, novelas e canais ao vivo em um só lugar</p><!-- CTA Buttons -->
       <div class="hero-techplay-buttons"><button id="btn-teste-hero" class="hero-techplay-btn-primary"> 🎬 TESTE GRÁTIS </button> <a href="#planos" class="hero-techplay-btn-secondary"> 📺 VER PLANOS </a>
       </div><!-- Stats -->
       <div class="hero-techplay-stats">
@@ -566,9 +532,6 @@
       </div><!-- Plano 3 Meses -->
       <div class="plan-card rounded-3xl p-8 text-center card-glow">
        <div class="text-4xl mb-4">
-      </div><!-- Plano 3 Meses -->
-      <div class="plan-card rounded-3xl p-8 text-center card-glow">
-       <div class="text-4xl mb-4">
         🗓️
        </div>
        <h3 class="text-xl font-bold mb-2">Trimestral</h3>
@@ -637,7 +600,7 @@
         </div>
        </div>
        <div><label class="block text-white/70 text-sm mb-3">Dispositivos</label>
-        <div class="grid grid-cols-2 gap-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos" value="Smart TV" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Smart TV</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="TV Box" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">TV Box</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="Celular" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Celular</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="PC" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">PC</span> </label>
+        <div class="grid grid-cols-2 gap-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="Smart TV" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Smart TV</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="TV Box" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">TV Box</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="Celular" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">Celular</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" name="dispositivos_teste" value="PC" class="checkbox-custom w-5 h-5"> <span class="text-white/80 text-sm">PC</span> </label>
         </div>
        </div>
        <div><label class="block text-white/70 text-sm mb-3">Conteúdo</label>
@@ -654,7 +617,7 @@
      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Comentário 1 -->
       <div class="comment-card rounded-2xl p-6 hover:border-[#00ff88]/20 transition">
        <div class="flex items-center gap-1 text-yellow-400 mb-4">
-        �������⭐��
+        ⭐⭐⭐⭐⭐
        </div>
        <p class="text-white/70 mb-4">"Melhor IPTV que já usei! Imagem perfeita e nunca trava. Recomendo demais!"</p>
        <div class="flex items-center gap-3">
@@ -708,8 +671,8 @@
        </div>
       </div>
      </div>
-    </div>
-   </section><!-- Ad Space 2 -->
+ </div>
+ </section><!-- Ad Space 2 -->
    <section class="py-8 px-4" style="background-image: url('techplaytv.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
     <div style="position: absolute; inset: 0; background: rgba(10, 10, 15, 0.85);"></div>
     <div class="max-w-4xl mx-auto" style="position: relative; z-index: 1;">
@@ -743,12 +706,12 @@
       </div><!-- FAQ 5 -->
       <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Como funciona o suporte?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
        <div class="faq-content px-6 pb-5">
-        <p class="text-white/70">Nosso suporte está disponível 24/7 via WhatsApp e Telegram. Nossa equipe está sempre pronta para ajudar com instalação, configuraç�����o e qualquer d��vida!</p>
+        <p class="text-white/70">Nosso suporte está disponível 24/7 via WhatsApp e Telegram. Nossa equipe está sempre pronta para ajudar com instalação, configuração e qualquer dúvida!</p>
        </div>
       </div><!-- FAQ 6 -->
       <div class="faq-item rounded-2xl overflow-hidden"><button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left"> <span class="font-medium">Posso usar em mais de um dispositivo?</span> <span class="faq-icon text-[#00ff88] text-xl font-bold">+</span> </button>
        <div class="faq-content px-6 pb-5">
-        <p class="text-white/70">Cada assinatura é para 1 dispositivo. Se precisar usar em mais aparelhos, consulte nossos planos multi-tela ou faça multiplas assinaturas com desconto especial!</p>
+        <p class="text-white/70">Cada assinatura é para 1 dispositivo. Se precisar usar em mais aparelhos, consulte nossos planos multi-tela ou faça múltiplas assinaturas com desconto especial!</p>
        </div>
       </div>
      </div>
@@ -760,7 +723,7 @@
      <div class="plan-card rounded-3xl p-8 md:p-12 card-glow">
       <div class="text-center mb-8">
        <div class="text-6xl mb-4">
-        ��
+        💰
        </div>
        <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Seja um Revendedor</span></h2>
        <p class="text-white/60 max-w-lg mx-auto">Ganhe dinheiro revendendo nossos planos. Comissões atrativas e suporte total para você crescer!</p>
@@ -773,13 +736,13 @@
        <div><label class="block text-white/70 text-sm mb-3">Atendimento preferido</label>
         <div class="flex gap-6 mb-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento_revenda" value="WhatsApp" checked class="radio-custom w-5 h-5" onchange="toggleContactField('revenda')"> <span class="text-white/80">WhatsApp</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento_revenda" value="Telegram" class="radio-custom w-5 h-5" onchange="toggleContactField('revenda')"> <span class="text-white/80">Telegram</span> </label>
         </div>
-        <div id="contact-field-revenda"><input type="tel" id="contact-input-revenda" name="contato" required placeholder="(51) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
+        <div id="contact-field-revenda"><input type="tel" id="contact-input-revenda" name="contato" required placeholder="(19) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
         </div>
        </div><button type="submit" class="btn-primary w-full py-5 rounded-xl text-lg font-bold mt-6 glow-green"> QUERO SER REVENDEDOR </button>
       </form>
      </div>
-    </div>
-   </section><!-- Novidades -->
+ </div>
+ </section><!-- Novidades -->
    <section class="py-20 px-4">
     <div class="max-w-4xl mx-auto">
      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Novidades e Anúncios</span></h2>
@@ -797,7 +760,7 @@
      <div class="text-center mb-8">
       <div class="flex items-center justify-center gap-2 mb-4"><span class="text-2xl">▶</span> <span class="text-xl font-bold gradient-text">TECH PLAY TV</span>
       </div>
-      <div class="flex flex-wrap justify-center gap-6 mb-6"><a href="https://wa.me/5551999792104" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/70 hover:text-[#00ff88] transition"> <span class="text-xl">📱</span> WhatsApp </a> <a href="https://t.me/techplaytv_oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/70 hover:text-[#00ff88] transition"> <span class="text-xl">✈️</span> @techplaytv_oficial </a>
+      <div class="flex flex-wrap justify-center gap-6 mb-6"><a href="https://wa.me/551999792104" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/70 hover:text-[#00ff88] transition"> <span class="text-xl">📱</span> WhatsApp </a> <a href="https://t.me/techplaytv_oficial" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white/70 hover:text-[#00ff88] transition"> <span class="text-xl">✈️</span> @techplaytv_oficial </a>
       </div>
       <p class="text-white/40 text-sm mb-2">Atendimento WhatsApp parceiro: Tech Play Digital</p>
      </div>
@@ -820,7 +783,7 @@
       <div><label class="block text-white/70 text-sm mb-3">Atendimento preferido</label>
        <div class="flex gap-6 mb-3"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento" value="WhatsApp" checked class="radio-custom w-5 h-5" onchange="toggleContactField('assinar')"> <span class="text-white/80">WhatsApp</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="atendimento" value="Telegram" class="radio-custom w-5 h-5" onchange="toggleContactField('assinar')"> <span class="text-white/80">Telegram</span> </label>
        </div>
-       <div id="contact-field-assinar"><input type="tel" id="contact-input-assinar" name="contato" required placeholder="(51) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
+       <div id="contact-field-assinar"><input type="tel" id="contact-input-assinar" name="contato" required placeholder="(19) 99979-2104" class="input-field w-full px-5 py-4 rounded-xl">
        </div>
       </div>
       <div><label class="block text-white/70 text-sm mb-3">Dispositivos</label>
@@ -834,72 +797,14 @@
      </form>
     </div>
    </div>
-  </div>
-
-  
-  <script>
-  const deviceIconsMap = {
-    "Smart TV": "fa-tv",
-    "TV Box": "fa-box",
-    "Celular": "fa-mobile-screen-button",
-    "PC": "fa-desktop"
-  };
-
-  const checkboxes = document.querySelectorAll(
-    'input[name="dispositivos"]'
-  );
-
-  const iconsContainer = document.getElementById("device-icons");
-
-  function updateDeviceIcons() {
-    iconsContainer.innerHTML = "";
-
-    checkboxes.forEach(cb => {
-      if (cb.checked) {
-        const icon = document.createElement("i");
-        icon.className = `fa-solid ${deviceIconsMap[cb.value]}`;
-        iconsContainer.appendChild(icon);
-      }
-    });
-  }
-
-  checkboxes.forEach(cb => {
-    cb.addEventListener("change", updateDeviceIcons);
-  });
-  </script>
-
-  
-  <input type="checkbox" name="dispositivos" value="Smart TV">
-<input type="checkbox" name="dispositivos" value="TV Box">
-<input type="checkbox" name="dispositivos" value="Celular">
-<input type="checkbox" name="dispositivos" value="PC">
-
-  
-  <script>
-    
-   function formatarDispositivosComIcones(dispositivosArray) {
-  return dispositivosArray
-    .map(d => {
-      const dispositivo = d.trim().toLowerCase();
-
-      if (dispositivo.includes("tv")) return "📺 Smart TV";
-      if (dispositivo.includes("box")) return "📦 TV Box";
-      if (dispositivo.includes("pc") || dispositivo.includes("computador")) return "💻 PC";
-      if (dispositivo.includes("celular") || dispositivo.includes("mobile")) return "📱 Celular";
-      if (dispositivo.includes("notebook")) return "💻 Notebook";
-
-      return `📦 ${d}`;
-    })
-    .join(", ");
-   }
-
-   
-   // Config
+ </div>
+ <script>
+    // Config
     const defaultConfig = {
       site_title: 'TECH PLAY TV',
       hero_subtitle: 'IPTV Premium com qualidade e estabilidade',
-      whatsapp_number: '5551999792104',
-      telegram_user: '@techplaytv_oficial',
+      whatsapp_number: '551999792104',
+      telegram_user: 'techplaytv_oficial',
       background_color: '#0a0a0f',
       accent_color: '#00ff88',
       text_color: '#ffffff',
@@ -955,7 +860,8 @@
 
     function updateUI() {
       document.getElementById('logo-text').textContent = config.site_title || defaultConfig.site_title;
-      document.getElementById('hero-title').innerHTML = `<span class="gradient-text">${config.site_title || defaultConfig.site_title}</span>`;
+      const heroTitle = document.getElementById('hero-title');
+      heroTitle.innerHTML = '<span class="hero-techplay-title-main gradient-text">' + (config.site_title || defaultConfig.site_title) + '</span><span class="hero-techplay-title-sub">O Melhor IPTV do Brasil</span>';
       document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
       
       document.documentElement.style.setProperty('--primary-green', config.accent_color || defaultConfig.accent_color);
@@ -963,10 +869,31 @@
       document.documentElement.style.setProperty('--card-bg', config.card_color || defaultConfig.card_color);
     }
 
+    // Helper function to format devices with emoji
+    function formatDispositivos(dispositivosArray) {
+      if (!dispositivosArray || dispositivosArray.length === 0) {
+        return '📺 Dispositivo';
+      }
+      
+      return dispositivosArray.map(device => {
+        const lower = device.toLowerCase();
+        if (lower.includes('smart') || (lower.includes('tv') && !lower.includes('box'))) {
+          return '📺 ' + device;
+        } else if (lower.includes('box')) {
+          return '📦 ' + device;
+        } else if (lower.includes('celular') || lower.includes('mobile')) {
+          return '📱 ' + device;
+        } else if (lower.includes('pc') || lower.includes('notebook') || lower.includes('computador')) {
+          return '💻 ' + device;
+        }
+        return '📺 ' + device;
+      }).join(', ');
+    }
+
     // Toggle contact field based on selection
     function toggleContactField(formType) {
-      const contactInput = document.getElementById(`contact-input-${formType}`);
-      const atendimentoRadios = document.querySelectorAll(`input[name="atendimento${formType === 'teste' ? '_teste' : formType === 'revenda' ? '_revenda' : ''}"]`);
+      const contactInput = document.getElementById('contact-input-' + formType);
+      const atendimentoRadios = document.querySelectorAll('input[name="atendimento' + (formType === 'teste' ? '_teste' : formType === 'revenda' ? '_revenda' : '') + '"]');
       
       let selectedValue = '';
       atendimentoRadios.forEach(radio => {
@@ -1033,7 +960,7 @@
     document.querySelectorAll('.btn-assinar').forEach(btn => {
       btn.addEventListener('click', () => {
         selectedPlan = btn.dataset.plano;
-        modalPlano.textContent = `Plano selecionado: ${selectedPlan}`;
+        modalPlano.textContent = 'Plano selecionado: ' + selectedPlan;
         modal.classList.remove('hidden');
         modal.classList.add('flex');
       });
@@ -1062,30 +989,29 @@
       const formData = new FormData(e.target);
       const nome = formData.get('nome');
       const contato = formData.get('contato');
-      const dispositivos = formData.get('dispositivos').join(', ') || 'Não especificado';
+      const dispositivosArray = formData.getAll('dispositivos');
+      const dispositivos = formatDispositivos(dispositivosArray);
       const conteudo = formData.get('conteudo');
       const atendimento = formData.get('atendimento');
+  const mensagemTexto = 
+        '🎬 TECH PLAY TV\n\n' +
+        'IPTV Premium com qualidade e estabilidade\n\n' +
+        '👤 Nome: ' + nome + '\n' +
+        '📞 Contato: ' + contato + '\n' +
+        '📺 Dispositivo: ' + dispositivos + '\n' +
+        '📦 Plano: ' + selectedPlan + '\n' +
+        '🎬 Conteudo: ' + conteudo + '\n\n' +
+        '✅ Enviado via Tech Play TV';
       
-      const mensagem = encodeURIComponent(
-        `    NOVA ASSINATURA\n\n` +
-        `📋 Plano: ${selectedPlan}\n` +
-        `👤 Nome: ${nome}\n` +
-        `📱 Contato: ${contato}\n` +
-        `📺 Dispositivos: ${dispositivos}\n` +
-        `🎬 Conteúdo: ${conteudo}\n` +
-        `💬 Atendimento via: ${atendimento}`
-      );
+      const mensagem = encodeURIComponent(mensagemTexto);
       
       const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
       const telegram = config.telegram_user || defaultConfig.telegram_user;
       
       if (atendimento === 'WhatsApp') {
-        window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
+        window.open('https://wa.me/' + whatsapp + '?text=' + mensagem, '_blank', 'noopener,noreferrer');
       } else {
-        window.open(
-  "https://t.me/techplaytv_oficial?text=" + encodeURIComponent(mensagem),
-  "_blank"
-);
+        window.open('https://t.me/' + telegram + '?text=' + mensagem, '_blank', 'noopener,noreferrer');
       }
       
       modal.classList.add('hidden');
@@ -1099,29 +1025,30 @@
       const formData = new FormData(e.target);
       const nome = formData.get('nome');
       const contato = formData.get('contato');
-      const dispositivos = formData.get('dispositivos_teste').join(', ') || 'Não especificado';
+      const dispositivosArray = formData.getAll('dispositivos_teste');
+      const dispositivos = formatDispositivos(dispositivosArray);
       const conteudo = formData.get('conteudo_teste');
       const atendimento = formData.get('atendimento_teste');
       
-      const mensagem = encodeURIComponent(
-        `🎁 SOLICITAÇÃO TESTE GRÁTIS\n\n` +
-        `👤 Nome: ${nome}\n` +
-        `📱 Contato: ${contato}\n` +
-        `📺  Dispositivos: ${dispositivos}\n` +
-        `🎬 Conteúdo: ${conteudo}\n` +
-        `💬 Atendimento via: ${atendimento}`
-      );
+      const mensagemTexto = 
+        '🎬 TECH PLAY TV\n\n' +
+        'IPTV Premium com qualidade e estabilidade\n\n' +
+        '👤 Nome: ' + nome + '\n' +
+        '📞 Contato: ' + contato + '\n' +
+        '📺 Dispositivo: ' + dispositivos + '\n' +
+        '📦 Plano/Teste: Teste Gratis\n' +
+        '🎬 Conteudo: ' + conteudo + '\n\n' +
+        '✅ Enviado via Tech Play TV';
+      
+      const mensagem = encodeURIComponent(mensagemTexto);
       
       const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
       const telegram = config.telegram_user || defaultConfig.telegram_user;
       
       if (atendimento === 'WhatsApp') {
-        window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
+        window.open('https://wa.me/' + whatsapp + '?text=' + mensagem, '_blank', 'noopener,noreferrer');
       } else {
-        window.open(
-  "https://t.me/@techplaytv_oficial?text=" + encodeURIComponent(mensagem),
-  "_blank"
-);
+        window.open('https://t.me/' + telegram + '?text=' + mensagem, '_blank', 'noopener,noreferrer');
       }
       
       e.target.reset();
@@ -1136,24 +1063,24 @@
       const contato = formData.get('contato');
       const atendimento = formData.get('atendimento_revenda');
       
-      const mensagem = encodeURIComponent(
-        `💰 QUERO SER REVENDEDOR\n\n` +
-        `👤 Nome: ${nome}\n` +
-        `📍 Cidade: ${cidade}\n` +
-        `📱 Contato: ${contato}\n` +
-        `💬 Atendimento via: ${atendimento}`
-      );
+      const mensagemTexto = 
+        '🎬 TECH PLAY TV\n\n' +
+        'IPTV Premium com qualidade e estabilidade\n\n' +
+        '👤 Nome: ' + nome + '\n' +
+        '📞 Contato: ' + contato + '\n' +
+        '📍 Cidade: ' + cidade + '\n' +
+        '📦 Plano/Teste: Revenda\n\n' +
+        '✅ Enviado via Tech Play TV';
+      
+      const mensagem = encodeURIComponent(mensagemTexto);
       
       const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
       const telegram = config.telegram_user || defaultConfig.telegram_user;
       
       if (atendimento === 'WhatsApp') {
-        window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
+        window.open('https://wa.me/' + whatsapp + '?text=' + mensagem, '_blank', 'noopener,noreferrer');
       } else {
-        window.open(
-  "https://t.me/@techplaytv_oficial" + encodeURIComponent(mensagem),
-  "_blank"
-);
+        window.open('https://t.me/' + telegram + '?text=' + mensagem, '_blank', 'noopener,noreferrer');
       }
       
       e.target.reset();
@@ -1187,7 +1114,7 @@
       },
       {
         img: 'img/cursos-motoristas.jpg',
-        link: 'https://wa.me/5551999792104?text=' + encodeURIComponent('Olá Tech Play Digital, quero saber mais sobre os cursos pra motoristas!')
+        link: 'https://wa.me/?text=' + encodeURIComponent('Olá Tech Play Digital, quero saber mais sobre os cursos pra motoristas!')
       }
     ];
 
@@ -1222,6 +1149,5 @@
     // Rotate every 20 seconds
     setInterval(rotateAds, 20000);
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c005b5c70f4e550',t:'MTc2ODc2MzA1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-                                                                                                                                                                                                                    </html>
-                                                                                                                                                                                                                    
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c108a8b4294df24',t:'MTc2ODkzMjc1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
