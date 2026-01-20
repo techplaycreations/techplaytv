@@ -1067,13 +1067,13 @@
       const atendimento = formData.get('atendimento');
       
       const mensagem = encodeURIComponent(
-        `    *NOVA ASSINATURA*\n\n` +
-        `📋 *Plano:* ${selectedPlan}\n` +
-        `👤 *Nome:* ${nome}\n` +
-        `📱 *Contato:* ${contato}\n` +
-        `📺 *Dispositivos:* ${dispositivos}\n` +
-        `🎬 *Conteúdo:* ${conteudo}\n` +
-        `💬 *Atendimento via:* ${atendimento}`
+        `    NOVA ASSINATURA\n\n` +
+        `📋 Plano: ${selectedPlan}\n` +
+        `👤 Nome: ${nome}\n` +
+        `📱 Contato: ${contato}\n` +
+        `📺 Dispositivos: ${dispositivos}\n` +
+        `🎬 Conteúdo: ${conteudo}\n` +
+        `💬 Atendimento via: ${atendimento}`
       );
       
       const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
@@ -1101,12 +1101,12 @@
       const atendimento = formData.get('atendimento_teste');
       
       const mensagem = encodeURIComponent(
-        `🎁 *SOLICITAÇÃO TESTE GRÁTIS*\n\n` +
-        `👤 *Nome:* ${nome}\n` +
-        `📱 *Contato:* ${contato}\n` +
-        `📺  *Dispositivos:* ${dispositivos}\n` +
-        `🎬 *Conteúdo:* ${conteudo}\n` +
-        `💬 *Atendimento via:* ${atendimento}`
+        `🎁 SOLICITAÇÃO TESTE GRÁTIS\n\n` +
+        `👤 Nome: ${nome}\n` +
+        `📱 Contato: ${contato}\n` +
+        `📺  Dispositivos: ${dispositivos}\n` +
+        `🎬 Conteúdo: ${conteudo}\n` +
+        `💬 Atendimento via: ${atendimento}`
       );
       
       const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
@@ -1131,11 +1131,11 @@
       const atendimento = formData.get('atendimento_revenda');
       
       const mensagem = encodeURIComponent(
-        `💰 *QUERO SER REVENDEDOR*\n\n` +
-        `👤 *Nome:* ${nome}\n` +
-        `📍 *Cidade:* ${cidade}\n` +
-        `📱 *Contato:* ${contato}\n` +
-        `💬 *Atendimento via:* ${atendimento}`
+        `💰 QUERO SER REVENDEDOR\n\n` +
+        `👤 Nome: ${nome}\n` +
+        `📍 Cidade: ${cidade}\n` +
+        `📱 Contato: ${contato}\n` +
+        `💬 Atendimento via: ${atendimento}`
       );
       
       const whatsapp = config.whatsapp_number || defaultConfig.whatsapp_number;
